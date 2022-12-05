@@ -1,23 +1,27 @@
 #ifndef PHONEBOOK_H
 #define PHONEBOOK_H
 
+# include "test.hpp"
 # include <iostream>
 # include <string>
 
 class PhoneBook 
-{     
-    public:           
-        int myNum;       
-        std::string myString;  
-};
+{     	
+	public:
+			PhoneBook();
+			~PhoneBook(void);
+			
+			
+			
+			
+			
+			void add_contact(void);       
 
-class Contact
-{
-	public:           
-        int				index;       
-        std::string 	first_name:
-        std::string		last_name;
-		std::string		nickname;
-}; 
+	private:
+			Contact *_contact[8];
+			int		_index;	    
+			
+
+};
 
 #endif

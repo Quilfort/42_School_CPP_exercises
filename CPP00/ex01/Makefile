@@ -2,8 +2,9 @@ NAME = phonebook
 CC = c++
 FLAGS = -Wall -Wextra -Werror
 FLAGSPP = -std=c++98
-INC = -I PhoneBook.hpp
-SRC = PhoneBook.cpp
+SRC =	PhoneBook.cpp \
+	  	main.cpp \
+		Contact.cpp
 OBJ = $(SRC:%.cpp=%.o)
 
 all: $(NAME)
@@ -12,7 +13,7 @@ $(NAME): $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
-	$(CC) $(INC) -c $< -o $@
+	$(CC) $(FLAGSPP) -c $< -o $@
 
 clean:
 	@echo "Cleaning up .o files"
