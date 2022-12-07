@@ -10,8 +10,12 @@ public:
 	Phonebook();
 	~Phonebook();
 
+	Contact	bring_contact(int i);
 
-	void add_contact();
+
+	void	add_contact(void);
+	void	search_contact(void);
+	void	display_full_phonebook(void);
 
 private:
 

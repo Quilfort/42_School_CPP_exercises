@@ -3,6 +3,7 @@
 
 # include <string>
 # include <iostream>
+# include <iomanip>
 
 class Contact
 {     
@@ -12,6 +13,8 @@ class Contact
 
 		void	set_contact(void);
 		void	print_contact(void);
+		void	display_contact(void);	
+
 
 	private:	
       	std::string	_first_name;
