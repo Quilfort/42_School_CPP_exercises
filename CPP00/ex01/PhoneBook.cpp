@@ -1,8 +1,8 @@
 #include "PhoneBook.hpp"
 
 Phonebook::Phonebook()
-: _index(0)
 {
+	_index = 0;
 	return;
 }
 
@@ -64,21 +64,18 @@ void Phonebook::search_contact(void)
 void Phonebook::remove_oldest_contact(void)
 {
 	int i = 1;
-	for (int i = 1; i < 7; i++)
+	for (int i = 1; i < 8; i++)
 		_contacts[i] = _contacts[i + 1];
-	
-
 }
 
 void Phonebook::add_contact(void)
 {
 	_index++;
-	if (_index > 3)
+	if (_index > 8)
 	{
 		std::cout << "Phonebook is full, deleting first contact" << std::endl << std::endl;
 		remove_oldest_contact();
 		_index--;
-
 	}
 	_contacts[_index].set_contact();
 }

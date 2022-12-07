@@ -6,7 +6,6 @@
 int main()
 {
 	Phonebook	phonebook;
-	int			index = 0;
 
 	bool active = true;
 	std::string command;
@@ -25,15 +24,7 @@ int main()
 		std::getline(std::cin, command);
 		
 		if (command == "ADD")
-		{
-			if (index > 8)
-				std::cout << "Phonebook is full" << std::endl;
-			else
-			{
-				phonebook.add_contact();
-				index++;
-			}
-		}
+			phonebook.add_contact();
 		else if (command == "SEARCH")
 			phonebook.search_contact();
 		else if (command == "EXIT" || std::cin.eof() == true)

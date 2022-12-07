@@ -21,7 +21,7 @@ class Phonebook
 
 		static int		_count;
 
-		Contact _contacts[8];
+		Contact _contacts[9];
 		int		_index;
 	};
 
