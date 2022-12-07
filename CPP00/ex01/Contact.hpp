@@ -9,11 +9,10 @@ class Contact
 {     
     public:           
 		Contact(void);
-		~Contact(void);
 
 		void	set_contact(void);
 		void	print_contact(void);
-		void	display_contact(void);	
+		void	display_contact(void);
 
 
 	private:	

@@ -5,16 +5,22 @@ Contact::Contact()
 	return;
 }
 
-Contact::~Contact()
+static	std::string small_format(std::string string)
 {
-	return;
+	if (string.size() > 10)
+	{
+		return(string.substr(0,9) + ".");
+	}
+	else
+		return (string);
 }
+
 
 void	Contact::display_contact(void)
 {
-	std::cout << std::setw(10) << _first_name << "|";
-	std::cout << std::setw(10) << _last_name << "|";
-	std::cout << std::setw(10) << _nickname << std::endl;
+	std::cout << std::setw(10) << small_format(_first_name) << "|";
+	std::cout << std::setw(10) << small_format(_last_name) << "|";
+	std::cout << std::setw(10) << small_format(_nickname) << std::endl;
 }
 
 void	Contact::print_contact(void)

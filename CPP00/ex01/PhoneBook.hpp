@@ -5,24 +5,23 @@
 
 class Phonebook
 {
-public:
+	public:
 
-	Phonebook();
-	~Phonebook();
+		Phonebook();
 
-	Contact	bring_contact(int i);
+		Contact	bring_contact(int i);
 
 
-	void	add_contact(void);
-	void	search_contact(void);
-	void	display_full_phonebook(void);
+		void	add_contact(void);
+		void	search_contact(void);
+		void	display_full_phonebook(void);
 
-private:
+	private:
 
-	static int		_count;
+		static int		_count;
 
-	Contact _contacts[8];
-	int		_index;
-};
+		Contact _contacts[8];
+		int		_index;
+	};
 
 #endif

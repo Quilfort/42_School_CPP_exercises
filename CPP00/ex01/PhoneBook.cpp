@@ -6,14 +6,9 @@ Phonebook::Phonebook()
 	return;
 }
 
-Phonebook::~Phonebook()
-{
-	return;
-}
-
 Contact Phonebook::bring_contact(int i)
 {
-	return (this->_contacts[i + 1]);
+	return (_contacts[i]);
 }
 
 void Phonebook::display_full_phonebook(void)
@@ -25,31 +20,55 @@ void Phonebook::display_full_phonebook(void)
 	for (int i = 0; i < this->_index; ++i)
 	{
 		std::cout << std::setw(10) << i + 1 << "|";
-		bring_contact(i).display_contact();
+		bring_contact(i + 1).display_contact();
 	}
+	std::cout << std::endl;
 
 }
 
 void Phonebook::search_contact(void)
 {
-	if (this->_index == 0)
+	if (_index == 0)
 	{
 		std::cout << "Phonebook has no contact" << std::endl << std::endl;
 		return ;
 	}
-	this->display_full_phonebook();
+
+	std::cout << "This is your contact list"<< std::endl;
+	display_full_phonebook();
+
+	std::string index;
+	bool	active = true;
+	
+	std::cout << "Which contact do you want to see the full information off?"<< std::endl;
 
 	
+	while (active == true)
+	{
 
+		std::cout << "Enter the index: ";
+		std::getline(std::cin, index);
+		int i = atoi(index.c_str());
+		std::cout << i << std::endl;
 
-
-
+		if (i < 0 || i > 8)
+			std::cout << "Wrong Index"<< std::endl;
+		else if (i > _index)
+			std::cout << "No Contact in Phonebook | Choose between 1 and "<< _index << std::endl;
+		else
+		{
+			std::cout << std::endl;
+			bring_contact(i).print_contact();
+			active = false;
+		}
+	}
+	std::cout << std::endl;
 }
 
 void Phonebook::add_contact(void)
 {
-	this->_index++;
-	if (this->_index > 8)
+	_index++;
+	if (_index > 8)
 		std::cout << "Phonebook is full" << std::endl << std::endl;
 	else
 	{
