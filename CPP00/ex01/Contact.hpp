@@ -14,7 +14,6 @@ class Contact
 		void	print_contact(void);
 		void	display_contact(void);
 
-
 	private:	
       	std::string	_first_name;
 		std::string	_last_name;

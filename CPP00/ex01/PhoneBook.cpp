@@ -17,7 +17,7 @@ void Phonebook::display_full_phonebook(void)
 	std::cout << std::setw(10) << "FIRST NAME" << "|";
 	std::cout << std::setw(10) << "LAST NAME" << "|";
 	std::cout << std::setw(10) << "NICKNAME" << std::endl;
-	for (int i = 0; i < this->_index; ++i)
+	for (int i = 0; i < _index; ++i)
 	{
 		std::cout << std::setw(10) << i + 1 << "|";
 		bring_contact(i + 1).display_contact();
@@ -45,15 +45,11 @@ void Phonebook::search_contact(void)
 	
 	while (active == true)
 	{
-
 		std::cout << "Enter the index: ";
 		std::getline(std::cin, index);
 		int i = atoi(index.c_str());
-		std::cout << i << std::endl;
 
-		if (i < 0 || i > 8)
-			std::cout << "Wrong Index"<< std::endl;
-		else if (i > _index)
+		if (i < 1 || i > _index)
 			std::cout << "No Contact in Phonebook | Choose between 1 and "<< _index << std::endl;
 		else
 		{
@@ -65,13 +61,24 @@ void Phonebook::search_contact(void)
 	std::cout << std::endl;
 }
 
+void Phonebook::remove_oldest_contact(void)
+{
+	int i = 1;
+	for (int i = 1; i < 7; i++)
+		_contacts[i] = _contacts[i + 1];
+	
+
+}
+
 void Phonebook::add_contact(void)
 {
 	_index++;
-	if (_index > 8)
-		std::cout << "Phonebook is full" << std::endl << std::endl;
-	else
+	if (_index > 3)
 	{
-		_contacts[_index].set_contact();
+		std::cout << "Phonebook is full, deleting first contact" << std::endl << std::endl;
+		remove_oldest_contact();
+		_index--;
+
 	}
+	_contacts[_index].set_contact();
 }

@@ -15,6 +15,7 @@ class Phonebook
 		void	add_contact(void);
 		void	search_contact(void);
 		void	display_full_phonebook(void);
+		void	remove_oldest_contact(void);
 
 	private:
 
