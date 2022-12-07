@@ -1,19 +1,16 @@
-#include "test.hpp"
+#include <iostream>
+#include <iomanip>
+#include <limits>
+#include "PhoneBook.hpp"
 
-int main(int argc, char const *argv[])
+int main()
 {
-	PhoneBook	phonebook;
+	Phonebook	phonebook;
 	int index = 0;
 
 
 	bool active = true;
 	std::string command;
-	
-	if (argc != 1)
-	{
-		std::cout << "Wrong number of input" << std::endl;
-		return (1);
-	}
 	
 	// ENTER nog working
 	while (active == true)

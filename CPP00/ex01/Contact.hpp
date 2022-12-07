@@ -1,9 +1,8 @@
 #ifndef CONTACT_H
 #define CONTACT_H
 
-# include <iostream>
 # include <string>
-# include "test.hpp"
+# include <iostream>
 
 class Contact
 {     
