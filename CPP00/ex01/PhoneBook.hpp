@@ -19,9 +19,7 @@ class Phonebook
 
 	private:
 
-		static int		_count;
-
-		Contact _contacts[9];
+		Contact _contacts[8];
 		int		_index;
 	};
 

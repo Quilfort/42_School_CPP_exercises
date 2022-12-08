@@ -2,7 +2,6 @@
 
 Contact::Contact()
 {
-	_index = 0;
 	return;
 }
 

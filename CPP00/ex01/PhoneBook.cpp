@@ -20,7 +20,7 @@ void Phonebook::display_full_phonebook(void)
 	for (int i = 0; i < _index; ++i)
 	{
 		std::cout << std::setw(10) << i + 1 << "|";
-		bring_contact(i + 1).display_contact();
+		bring_contact(i).display_contact();
 	}
 	std::cout << std::endl;
 
@@ -54,7 +54,7 @@ void Phonebook::search_contact(void)
 		else
 		{
 			std::cout << std::endl;
-			bring_contact(i).print_contact();
+			bring_contact(i - 1).print_contact();
 			active = false;
 		}
 	}
@@ -63,8 +63,7 @@ void Phonebook::search_contact(void)
 
 void Phonebook::remove_oldest_contact(void)
 {
-	int i = 1;
-	for (int i = 1; i < 8; i++)
+	for (int i = 0; i < 7; i++)
 		_contacts[i] = _contacts[i + 1];
 }
 
@@ -77,5 +76,5 @@ void Phonebook::add_contact(void)
 		remove_oldest_contact();
 		_index--;
 	}
-	_contacts[_index].set_contact();
+	_contacts[_index - 1].set_contact();
 }
