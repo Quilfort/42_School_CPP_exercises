@@ -1,13 +1,14 @@
-#ifndef HUMAN_A_H
-# define HUMAN_A_H
+#ifndef HUMANA_H
+# define HUMANA_H
 
 # include <string>
 # include <iostream>
+# include "Weapon.hpp"
 
 class HumanA
 {
 	public:
-		HumanA();
+		HumanA(std::string name, Weapon &weapon);
 		~HumanA();
 
 		void	attack(void);
@@ -15,6 +16,7 @@ class HumanA
 
 	private:
 		std::string	name;
+		Weapon		&_weapon;
 
 	};
 #endif

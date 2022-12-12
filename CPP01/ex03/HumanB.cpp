@@ -3,7 +3,7 @@
 HumanB::HumanB(std::string name)
 {
     this->name = name;
-    //std::cout << this->name << std::endl;
+    this->_weapon = NULL;
     return ;
 }
 
@@ -14,10 +14,15 @@ HumanB::~HumanB()
 
 void HumanB::attack()
 {
-    std::cout << this->name << " attacks with their " << "Weapon" << std::endl;
+    if (!this->_weapon)
+    {
+        std::cout << this->name << " attacks with their " << "with his fists" << std::endl;
+        return ;
+    }
+    std::cout << this->name << " attacks with their " << this->_weapon->getType() << std::endl;
 }
 
-//void HumanB::setWeapon(std::string weapon)
-//{
-//    return ;
-//}
+void HumanB::setWeapon(Weapon &weapon)
+{
+    this->_weapon = &weapon;
+}

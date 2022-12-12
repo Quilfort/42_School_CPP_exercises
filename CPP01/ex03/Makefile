@@ -3,7 +3,9 @@ CC = c++
 FLAGS = -Wall -Wextra -Werror
 FLAGSPP = -std=c++98
 SRC =	main.cpp \
-		Weapon.cpp
+		Weapon.cpp \
+		HumanA.cpp \
+		HumanB.cpp
 OBJ = $(SRC:%.cpp=%.o)
 
 all: $(NAME)

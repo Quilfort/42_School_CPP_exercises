@@ -1,8 +1,9 @@
-#ifndef HUMAN_B_H
-# define HUMAN_B_H
+#ifndef HUMANB_H
+# define HUMANB_H
 
 # include <string>
 # include <iostream>
+# include "Weapon.hpp"
 
 class HumanB
 {
@@ -11,11 +12,12 @@ class HumanB
 		~HumanB();
 
 		void	attack(void);
-		//void	setWeapon(std::string weapon);
+		void	setWeapon(Weapon &weapon);
 
 
 	private:
         std::string	name;
+		Weapon		*_weapon;
         
     };
 #endif

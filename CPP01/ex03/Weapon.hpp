@@ -1,5 +1,5 @@
-#ifndef HUMAN_B_H
-# define HUMAN_B_H
+#ifndef WEAPON_H
+# define WEAPON_H
 
 # include <string>
 # include <iostream>
@@ -7,13 +7,18 @@
 class Weapon
 {
 	public:
-        void    getType(std::string type);
-        void    setType(std::string	newType);
-        void    attack();
+
+        Weapon(std::string weapon);
+	~Weapon();
+
+
+        std::string const	&getType(void);
+        void                    setType(std::string type);
 
 
 	private:
         std::string	type;
+        
         
     };
 #endif
