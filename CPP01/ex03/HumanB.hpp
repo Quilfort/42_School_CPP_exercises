@@ -14,10 +14,8 @@ class HumanB
 		void	attack(void);
 		void	setWeapon(Weapon &weapon);
 
-
 	private:
         std::string	name;
 		Weapon		*_weapon;
-        
     };
 #endif

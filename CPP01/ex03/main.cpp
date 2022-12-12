@@ -28,6 +28,7 @@ int main()
 	{
         std::cout << "---------------------------------------------------" << std::endl;
 		std::cout << "Human B Kim tries to attack without taking a weapon"<< std::endl << std::endl;
+		
 		Weapon  club = Weapon("flaming spiked club");
 
         HumanB  kim("kim");
