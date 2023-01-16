@@ -24,10 +24,10 @@ class Fixed
 
 
 			//Arithmetic operators
-			Fixed operator+(const Fixed& right);
-			Fixed operator-(const Fixed& right);
-			Fixed operator*(const Fixed& right);
-			Fixed operator/(const Fixed& right);
+			Fixed operator+ (const Fixed &fixed) const;
+			Fixed operator- (const Fixed &fixed) const;
+			Fixed operator* (const Fixed &fixed) const;
+			Fixed operator/ (const Fixed &fixed) const;
 
 			//increment/decrement
 			Fixed& operator++();

@@ -8,7 +8,7 @@ class Fixed
     public:
             Fixed();
 			Fixed(Fixed const &other);
-			virtual ~Fixed();
+			~Fixed();
 
 			Fixed &operator=(Fixed const &other);
 

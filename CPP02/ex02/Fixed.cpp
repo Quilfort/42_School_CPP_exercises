@@ -68,36 +68,32 @@ bool Fixed::operator!=(const Fixed& right)
 }
 
 //Arithmetic operators
-Fixed Fixed::operator+(const Fixed& right)
+Fixed   Fixed::operator+ (const Fixed &fixed) const
 {
-	Fixed ret_val;
+    Fixed result;
 
-	ret_val.setRawBits(this->value + right.value);
-	return (ret_val);
+    result.setRawBits(this->getRawBits() + fixed.getRawBits());
+    return result;
 }
 
-Fixed Fixed::operator-(const Fixed& right)
+Fixed   Fixed::operator- (const Fixed &fixed) const
 {
-	Fixed ret_val;
+    Fixed result;
 
-	ret_val.setRawBits(this->value - right.value);
-	return (ret_val);
+    result.setRawBits(this->getRawBits() - fixed.getRawBits());
+    return result;
 }
 
-Fixed Fixed::operator*(const Fixed& right)
+Fixed   Fixed::operator* (const Fixed &fixed) const
 {
-	Fixed ret_val;
-
-	ret_val.setRawBits(this->value * right.value);
-	return (ret_val);	
+    Fixed result(this->toFloat() * fixed.toFloat());
+    return result;
 }
 
-Fixed Fixed::operator/(const Fixed& right)
+Fixed   Fixed::operator/ (const Fixed &fixed) const
 {
-	Fixed ret_val;
-
-	ret_val.setRawBits(this->value * (1 << fract_bits) / right.value);
-	return (ret_val);
+    Fixed result(this->toFloat() / fixed.toFloat());
+    return result;
 }
 
 //Increment/decrement
@@ -116,14 +112,14 @@ Fixed& Fixed::operator--()
 Fixed Fixed::operator++(int)
 {
 	Fixed temp = *this;
-	++*this;
+	++(*this);
 	return (temp);
 }
 
 Fixed Fixed::operator--(int)
 {
 	Fixed temp = *this;
-	--*this;
+	--(*this);
 	return (temp);
 }
 
