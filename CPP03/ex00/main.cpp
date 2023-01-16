@@ -3,9 +3,49 @@
 
 int main()
 {
-    ClapTrap claptrap;
+    {
+        ClapTrap claptrap;
+        std::cout << "---------------------------------------------------" << std::endl;
+        std::cout << "ClapTrap attacks until he has no energy" << std::endl;
+        std::cout << "---------------------------------------------------" << std::endl;
+        int i = 0;
+        while (i < 11)
+        {
+            claptrap.attack("Zer0");
+            i++;
+        }
+        std::cout << "---------------------------------------------------" << std::endl;
+        std::cout << "With no energy, he can also not repair himself" << std::endl;
+        std::cout << "---------------------------------------------------" << std::endl;
+        claptrap.beRepaired(12);
 
-    claptrap.attack("Chicken");
+
+        std::cout << "---------------------------------------------------" << std::endl;
+    }
+        
+    {
+        std::cout << "---------------------------------------------------" << std::endl;
+        std::cout << "---------------------------------------------------" << std::endl;
+        ClapTrap claptrap;
+        std::cout << "---------------------------------------------------" << std::endl;
+        std::cout << "ClapTrap will heal 3hp, 2hp and 5 hp. Total will be 20hp" << std::endl;
+        std::cout << "---------------------------------------------------" << std::endl;
+        claptrap.beRepaired(3);
+        claptrap.beRepaired(2);
+        claptrap.beRepaired(5);
+    }
+
+    {
+        std::cout << "---------------------------------------------------" << std::endl;
+        std::cout << "---------------------------------------------------" << std::endl;
+        ClapTrap claptrap;
+        std::cout << "---------------------------------------------------" << std::endl;
+        std::cout << "ClapTrap will stop working with 0 HP" << std::endl;
+        std::cout << "---------------------------------------------------" << std::endl;
+        claptrap.beRepaired(3);
+        claptrap.beRepaired(2);
+        claptrap.beRepaired(5);
+    }
 
     return (0);
 
