@@ -42,9 +42,17 @@ int main()
         std::cout << "---------------------------------------------------" << std::endl;
         std::cout << "ClapTrap will stop working with 0 HP" << std::endl;
         std::cout << "---------------------------------------------------" << std::endl;
-        claptrap.beRepaired(3);
-        claptrap.beRepaired(2);
+        claptrap.takeDamage(4);
+        claptrap.takeDamage(5);
         claptrap.beRepaired(5);
+        claptrap.takeDamage(100);
+        claptrap.takeDamage(100);
+        std::cout << "---------------------------------------------------" << std::endl;
+        std::cout << "And Dead ClapTrap can not attack or repair" << std::endl;
+        std::cout << "---------------------------------------------------" << std::endl;
+        claptrap.beRepaired(50);
+        claptrap.attack("Zer0");
+        std::cout << "---------------------------------------------------" << std::endl;
     }
 
     return (0);

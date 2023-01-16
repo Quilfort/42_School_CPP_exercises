@@ -43,36 +43,61 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &old_obj)
 //Public Member Functions
 void ClapTrap::attack(const std::string& target)
 {
-    if (this->EnergyPoints > 0)
+    if (this->HitPoints == 0)
     {
-        std::cout << "ClapTrap " << this->name << " attacks "<< target << ", causing ";
-        std::cout << this->AttackDamage <<" points of damage!"<< std::endl;
-        this->EnergyPoints--;
+        std::cout << "DEAD CLAPTRAP CAN NOT ATTACK" << std::endl << std::endl;
     }
     else
-        std::cout << "No Energy Left || CAN NOT ATTACK || Recharge your battery" << std::endl;
-    
-    std::cout << "Total Energy = "<<  this->EnergyPoints << std::endl << std::endl;
-    
-    
+    {
+        if (this->EnergyPoints > 0)
+        {
+            std::cout << "ClapTrap " << this->name << " attacks "<< target << ", causing ";
+            std::cout << this->AttackDamage <<" points of damage!"<< std::endl;
+            this->EnergyPoints--;
+        }
+        else
+            std::cout << "No Energy Left || CAN NOT ATTACK || Recharge your battery" << std::endl;
+        
+        std::cout << "Total Energy = "<<  this->EnergyPoints << std::endl << std::endl;
+    }
 }
 
-//void takeDamage(unsigned int amount)
-//{
+void ClapTrap::takeDamage(unsigned int amount)
+{
+    if (this->HitPoints == 0)
+        std::cout << "STOP! STOP! He is already dead" << std::endl << std::endl;
+    else if(amount >= this->HitPoints)
+    {
+        this->HitPoints = 0;
+        std::cout << "Critial Hit! Claptrap " << this->name << " has no Hitpoints left" << std::endl << std::endl;
+    }
+    else
+    {
+        std::cout << "ClapTrap " << this->name << " takes "<< amount << " damage!" << std::endl;
+        this->HitPoints = this->HitPoints - amount;
+        std::cout << "Total Hitpoints = " << this->HitPoints << std::endl << std::endl;
+    }
+}
 
-//}
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-    if (this->EnergyPoints > 0)
+    if (this->HitPoints == 0)
     {
-        std::cout << "ClapTrap " << this->name << " repairs " << amount << " hit points" << std::endl;
-        this->HitPoints = HitPoints + amount;
-        std::cout << "Total Hitpoints = " << this->HitPoints << std::endl;
-        this->EnergyPoints--;
+        std::cout << "DEAD CLAPTRAP CAN NOT REPAIR" << std::endl << std::endl;
     }
     else
-        std::cout << "No Energy Left || CAN NOT REPAIR ITSELF || Recharge your battery" << std::endl;
-        
-    std::cout << "Total Energy = "<<  this->EnergyPoints << std::endl << std::endl;
+    {
+        if (this->EnergyPoints > 0)
+        {
+            std::cout << "ClapTrap " << this->name << " repairs " << amount << " hit points" << std::endl;
+            this->HitPoints = HitPoints + amount;
+            std::cout << "Total Hitpoints = " << this->HitPoints << std::endl;
+            this->EnergyPoints--;
+        }
+        else
+            std::cout << "No Energy Left || CAN NOT REPAIR ITSELF || Recharge your battery" << std::endl;
+
+        std::cout << "Total Energy = "<<  this->EnergyPoints << std::endl << std::endl;
+    }
 }
