@@ -9,25 +9,46 @@
 
 int main()
 {
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
     std::cout << "---------------------------------------------------" << std::endl;
     Animal  *AnimalArray[10];
     std::cout << "---------------------------------------------------" << std::endl;
 
+    //5 Dogs in Array
     for (int i = 0; i < 5; i++)
     {
-    	AnimalArray[i] = new Dog();
+    	std::cout << i + 1 << " ";
+        AnimalArray[i] = new Dog();
 		if (i != 4)
 			std::cout << "------" << std::endl;
     }
-	std::cout << "---------------------------------------------------" << std::endl;
-	delete i;
-	delete j;
-	std::cout << "---------------------------------------------------" << std::endl;
+    std::cout << "---------------------------------------------------" << std::endl;
 
-
-
+    //5 Cats in Array
+    for (int i = 5; i < 10; i++)
+    {
+    	std::cout << i + 1 << " ";
+        AnimalArray[i] = new Cat();
+		if (i != 9)
+			std::cout << "------" << std::endl;
+    }
+    std::cout << "---------------------------------------------------" << std::endl;
+    std::cout << "Dog will bark and Cat will miauw" << std::endl;
+    std::cout << "---------------------------------------------------" << std::endl;
     
+    AnimalArray[1]->makeSound();
+    AnimalArray[7]->makeSound();
+    std::cout << "---------------------------------------------------" << std::endl;
+
+    //Delete full Array
+    for (int i = 0; i < 10; i++)
+    {
+        std::cout << i + 1 << " ";
+        delete AnimalArray[i];
+        if (i != 9)
+			std::cout << "------" << std::endl;
+    }
+	std::cout << "---------------------------------------------------" << std::endl;
+	std::cout << "---------------------------------------------------" << std::endl;
+
     return EXIT_SUCCESS;
 }
