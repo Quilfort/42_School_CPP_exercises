@@ -13,7 +13,9 @@ Bureaucrat::Bureaucrat(const Bureaucrat &old_obj)
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &old_obj)
 {
     //this->name = old_obj.name;
-    //this->grade = grade;
+    //this->name = old_obj.getName();
+    this->grade = old_obj.grade;
+    //this->grade = old_obj.getGrade();
     return (*this);
 }
 
@@ -25,9 +27,13 @@ Bureaucrat::~Bureaucrat()
 // Getters
 std::string Bureaucrat::getName()
 {
-
+    return (this->name);
 }
 
+int Bureaucrat::getGrade()
+{
+    return (this->grade);
+}
 
 //Check Grade
 void Bureaucrat::GradeTooHighException()

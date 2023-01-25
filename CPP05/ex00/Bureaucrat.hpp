@@ -15,6 +15,7 @@ class Bureaucrat
 		void GradeTooHighException();
 
 		std::string getName();
+		int getGrade();
 
     private:
 		const std::string	name;
