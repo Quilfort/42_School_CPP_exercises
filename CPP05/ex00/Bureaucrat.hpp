@@ -6,10 +6,15 @@
 class Bureaucrat
 {
     public:
-        Bureaucrat();
+        Bureaucrat(const std::string &input_name, int grade);
 		Bureaucrat(const Bureaucrat &old_obj);
 		Bureaucrat &operator=(const Bureaucrat &old_obj);
 		~Bureaucrat();
+
+		void GradeTooLowException();
+		void GradeTooHighException();
+
+		std::string getName();
 
     private:
 		const std::string	name;
