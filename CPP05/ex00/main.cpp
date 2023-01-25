@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include <exception>
 
 int main ()
 {
@@ -6,6 +7,20 @@ int main ()
 
     std::cout << willem.getName() << std::endl;
     std::cout << willem.getGrade() << std::endl;
+
+    //try
+    //{
+    //    /* code */
+    //}
+    //catch(const std::exception& e)
+    //{
+    //    std::cerr << e.what() << '\n';
+    //}
+    
+
+
+
+
 
 
 
