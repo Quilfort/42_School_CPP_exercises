@@ -10,17 +10,39 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat &old_obj);
 		Bureaucrat &operator=(const Bureaucrat &old_obj);
 		~Bureaucrat();
-
-		void GradeTooLowException();
-		void GradeTooHighException();
-
+		
+		//Getters
 		std::string getName() const;
-		int getGrade() const; 
+		int getGrade() const;
+
+		//Change Grade
+		void IncrementGrade();
+
+
+
+
+		class GradeTooLowException : std::exception
+		{
+			public:
+				const char *what() const throw () 
+				{
+					return "Grade is to low";
+				}
+		};
+
+		class GradeTooHighException : std::exception
+		{
+			public:
+				const char *what() const throw ()
+				{
+					return "Grade is to high";
+				}
+		};
 
     private:
 		const std::string	name;
 		int grade;
-
 };
+std::ostream& operator<<(std::ostream& o, const Bureaucrat& bureaucrat);
 
 #endif
