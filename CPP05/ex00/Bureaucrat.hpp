@@ -17,6 +17,7 @@ class Bureaucrat
 
 		//Change Grade
 		void IncrementGrade();
+		void DecrementGrade();
 
 
 

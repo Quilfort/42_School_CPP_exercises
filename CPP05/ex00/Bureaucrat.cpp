@@ -39,11 +39,18 @@ int Bureaucrat::getGrade() const
     return (this->grade);
 }
 
+void Bureaucrat::DecrementGrade() 
+{
+    if (this->grade + 1 > 150)
+        throw Bureaucrat::GradeTooLowException();
+    this->grade++;
+}
+
 void Bureaucrat::IncrementGrade() 
 {
-    this->grade++;
-    
-
+    if (this->grade + 1 < 1)
+        throw Bureaucrat::GradeTooHighException();
+    this->grade--;
 }
 
 //insertion operator

@@ -19,6 +19,7 @@ int main ()
     {
         std::cerr << e.what() << '\n';
     }
+    
     std::cout << "---------------------------------------------------" << std::endl;
     std::cout << "SARAH GRADE 151, IS INVALID" << std::endl;
     std::cout << "---------------------------------------------------" << std::endl;
@@ -35,6 +36,27 @@ int main ()
     {
         std::cerr << e.what() << '\n';
     }
+
+    std::cout << "---------------------------------------------------" << std::endl;
+    std::cout << "Walter starts with grade 150 but decrements with 1 " << std::endl;
+    std::cout << "---------------------------------------------------" << std::endl;
+
+    Bureaucrat walter("Walter", 150);
+    std::cout << walter << std::endl;
+    try
+    {
+        walter.DecrementGrade();
+        std::cout << walter << std::endl;
+    }
+    catch(Bureaucrat::GradeTooLowException& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    catch(Bureaucrat::GradeTooHighException& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
     std::cout << "---------------------------------------------------" << std::endl;
     std::cout << "Pick Your Own Number" << std::endl;
     std::cout << "---------------------------------------------------" << std::endl;
@@ -46,8 +68,8 @@ int main ()
 
     try
     {
-        Bureaucrat willem("The Evaluator", i);
-        std::cout << willem << std::endl;
+        Bureaucrat evaluator("The Evaluator", i);
+        std::cout << evaluator << std::endl;
     }
     catch(Bureaucrat::GradeTooLowException& e)
     {
@@ -57,7 +79,6 @@ int main ()
     {
         std::cerr << e.what() << '\n';
     }
-
     std::cout << "---------------------------------------------------" << std::endl;
     return EXIT_SUCCESS;
 }
