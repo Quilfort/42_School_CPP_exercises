@@ -24,3 +24,20 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 {
     std::cout << "ShrubberyCreationForm Destructor called" << std::endl;
 }
+
+void ShrubberyCreationForm::execute(Bureaucrat const &executor)
+{
+    std::cout << executor << std::endl;
+    std::string			shrubbery =	"               ,@@@@@@@,\n"
+							   						"       ,,,.   ,@@@@@@/@@,  .oo8888o.\n"
+							   						"    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n"
+							   						"   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'\n"
+							   						"   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'\n"
+							   						"   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'\n"
+							   						"   `&%\\ ` /%&'    |.|        \\ '|8'\n"
+							   						"       |o|        | |         | |\n"
+							   						"       |.|        | |         | |\n"
+							   						"    \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_";
+    std::cout << shrubbery << std::endl;
+
+}

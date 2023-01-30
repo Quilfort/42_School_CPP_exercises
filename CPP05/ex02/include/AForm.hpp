@@ -21,6 +21,7 @@ class AForm
 		//Public Member Functions
    		void beSigned(const Bureaucrat &bureaucrat);
 		void signAForm(const Bureaucrat &bureaucrat) const;
+		virtual void execute(Bureaucrat const &executor) = 0;
 
   	class GradeTooLowException : std::exception
 	{

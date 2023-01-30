@@ -86,6 +86,11 @@ const char *AForm::GradeTooHighException::what(void) const throw()
 	return ("Grade too high");
 };
 
+void AForm::execute(Bureaucrat const &executor)
+{
+    std::cout << executor << std::endl;
+}
+
 //insertion operator
 std::ostream& operator<<(std::ostream& o, const AForm& AForm)
 {

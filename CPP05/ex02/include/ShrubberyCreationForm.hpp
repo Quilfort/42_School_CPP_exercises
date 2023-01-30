@@ -12,6 +12,7 @@ class ShrubberyCreationForm : public AForm
 		~ShrubberyCreationForm();
 
 		//Public Member Functions
+		void execute(Bureaucrat const &executor);
 
 	private:
     	const std::string &target; 

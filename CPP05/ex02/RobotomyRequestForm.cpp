@@ -4,7 +4,6 @@
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm("RobotomyRequestForm", 72, 45), target(target)
 {
     std::cout << "RobotomyRequestForm constructor called" << std::endl;
-    std::cout << this->target << " has been pardoned by Zaphod Beeblebrox."<< std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &old_obj) : AForm(old_obj), target(old_obj.target)
@@ -24,4 +23,10 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 RobotomyRequestForm::~RobotomyRequestForm()
 {
     std::cout << "RobotomyRequestForm Destructor called" << std::endl;
+}
+
+void RobotomyRequestForm::execute(Bureaucrat const &executor)
+{
+    std::cout << executor << std::endl;
+    std::cout << this->target << " makes drill noises"<< std::endl;
 }
