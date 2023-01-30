@@ -19,9 +19,6 @@ class Bureaucrat
 		void IncrementGrade();
 		void DecrementGrade();
 
-
-
-
 		class GradeTooLowException : std::exception
 		{
 			public:
