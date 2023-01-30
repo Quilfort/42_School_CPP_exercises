@@ -53,6 +53,17 @@ void Bureaucrat::IncrementGrade()
     this->grade--;
 }
 
+// Exceptions
+const char *Bureaucrat::GradeTooLowException::what(void) const throw()
+{
+	return ("Grade too low");
+};
+
+const char *Bureaucrat::GradeTooHighException::what(void) const throw()
+{
+	return ("Grade too high");
+};
+
 //insertion operator
 std::ostream& operator<<(std::ostream& o, const Bureaucrat& bureaucrat)
 {
