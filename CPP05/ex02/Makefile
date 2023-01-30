@@ -1,9 +1,15 @@
-NAME = ClapTrap
+NAME = allForms
 CC = c++
 FLAGS = -Wall -Wextra -Werror
 FLAGSPP = -std=c++98
+HEADER = -I ./include
 SRC =	main.cpp \
-		ClapTrap.cpp
+		Bureaucrat.cpp \
+		AForm.cpp \
+		ShrubberyCreationForm.cpp \
+		RobotomyRequestForm.cpp \
+		PresidentialPardonForm.cpp
+		
 OBJ = $(SRC:%.cpp=%.o)
 
 all: $(NAME)
@@ -12,14 +18,14 @@ $(NAME): $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
-	$(CC) $(FLAGS) $(FLAGSPP) -c $< -o $@
+	$(CC) $(FLAGS) $(HEADER) $(FLAGSPP) -c $< -o $@
 
 clean:
 	@echo "Cleaning up .o files"
 	@rm -f $(OBJ)
 
 fclean: clean
-	@echo "Delete ./ClapTrap"
+	@echo "Delete ./allForms"
 	@rm -f $(NAME)
 
 re: fclean all
