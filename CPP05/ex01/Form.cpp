@@ -73,7 +73,6 @@ void Form::signForm(const Bureaucrat &bureaucrat) const
         std::cout << bureaucrat.getName() << " signed " << this->getName() << std::endl;
     if (this->_signed == false)
         std::cout << bureaucrat.getName() << " couldn’t sign " << this->getName() << " because ";
-
 }
 
 // Exceptions
@@ -90,6 +89,6 @@ const char *Form::GradeTooHighException::what(void) const throw()
 //insertion operator
 std::ostream& operator<<(std::ostream& o, const Form& form)
 {
-	o << form.getName() << " " << form.getGradeSign() << " " << form.getGradeExecute(); 
+	o << "Name: " << form.getName() << " | Grade to Sign: " << form.getGradeSign() << " | Grade to Execute: " << form.getGradeExecute() << " | Bool Signed: " << form.isSigned();
 	return o;
 }

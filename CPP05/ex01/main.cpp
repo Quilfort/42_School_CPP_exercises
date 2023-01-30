@@ -11,11 +11,14 @@ int main ()
     {
 		Bureaucrat kees("Kees", 3);
         std::cout << kees << std::endl;
+        std::cout << "-----" << std::endl;
         try 
         {
-            Form one("Form One", 1, 2);
+            Form one("Form One", 1, 3);
             std::cout << one << std::endl;
-            std::cout << "||Form is correct, Sign Form||?" << std::endl;
+            std::cout << "-----" << std::endl;
+            std::cout << "||Form is correct, Sign Form?||" << std::endl;
+            std::cout << "-----" << std::endl;
             one.beSigned(kees);
         }
         catch (Form::GradeTooLowException& e) 
