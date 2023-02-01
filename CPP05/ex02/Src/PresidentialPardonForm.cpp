@@ -1,5 +1,5 @@
 #include "PresidentialPardonForm.hpp"
-#include "Bureaucrat.hpp"
+#include "../include/Bureaucrat.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : AForm("PresidentialPardonForm", 25, 5), target(target)
 {
@@ -15,8 +15,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &old
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm &old_obj)
 {
     //std::cout << "Copy PresidentialPardonForm assignment operator called" << std::endl;
-    if (this == &old_obj)
-		return *this;
+    (void) old_obj;
     return (*this);
 }
 

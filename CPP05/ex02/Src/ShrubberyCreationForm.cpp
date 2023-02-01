@@ -1,7 +1,8 @@
 #include "ShrubberyCreationForm.hpp"
-#include "Bureaucrat.hpp"
+#include "../include/Bureaucrat.hpp"
+#include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("ShrubberyCreationForm constructor", 145, 137), target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("ShrubberyCreationForm", 145, 137), target(target)
 {
     //std::cout << "ShrubberyCreationForm constructor called" << std::endl;
 }
@@ -15,8 +16,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &old_ob
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &old_obj)
 {
     //std::cout << "Copy ShrubberyCreationForm assignment operator called" << std::endl;
-    if (this == &old_obj)
-		return *this;
+    (void) old_obj;
     return (*this);
 }
 
@@ -27,6 +27,14 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor)
 {
+    std::ofstream	outfile;
+	std::string	outfileName = this->target + "_shrubbery";
+	outfile.open(outfileName);
+	if (!outfile)
+	{
+        std::cout << "Cannot create outfile" << std::endl;
+        exit(EXIT_FAILURE);
+    }
     std::string			shrubbery =	"               ,@@@@@@@,\n"
 							   						"       ,,,.   ,@@@@@@/@@,  .oo8888o.\n"
 							   						"    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n"
@@ -37,10 +45,9 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor)
 							   						"       |o|        | |         | |\n"
 							   						"       |.|        | |         | |\n"
 							   						"    \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_";
-    
     if (executor.getGrade() <= this->getGradeExecute())
     {
-        std::cout << shrubbery << std::endl;
+        outfile << shrubbery;
     }
     else
     {
