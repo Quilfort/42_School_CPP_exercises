@@ -3,12 +3,12 @@ CC = c++
 FLAGS = -Wall -Wextra -Werror
 FLAGSPP = -std=c++98
 HEADER = -I ./include
-SRC =	main.cpp \
-		Bureaucrat.cpp \
-		AForm.cpp \
-		ShrubberyCreationForm.cpp \
-		RobotomyRequestForm.cpp \
-		PresidentialPardonForm.cpp
+SRC =	./Src/main.cpp \
+		./Src/Bureaucrat.cpp \
+		./Src/AForm.cpp \
+		./Src/ShrubberyCreationForm.cpp \
+		./Src/RobotomyRequestForm.cpp \
+		./Src/PresidentialPardonForm.cpp
 		
 OBJ = $(SRC:%.cpp=%.o)
 

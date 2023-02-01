@@ -9,7 +9,7 @@ int main ()
     std::cout << "---------------------------------------------------" << std::endl;
     try 
     {
-		Bureaucrat kees("Kees", 3);
+		Bureaucrat kees("Kees", 0);
         std::cout << kees << std::endl;
         std::cout << "-----" << std::endl;
         try 
@@ -19,7 +19,7 @@ int main ()
             std::cout << "-----" << std::endl;
             std::cout << "||Form is correct, Sign Form?||" << std::endl;
             std::cout << "-----" << std::endl;
-            one.beSigned(kees);
+            kees.signForm(one);
         }
         catch (Form::GradeTooLowException& e) 
         {

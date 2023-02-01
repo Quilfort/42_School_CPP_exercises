@@ -2,7 +2,8 @@
 # define FORM_HPP
 
 #include <iostream>
-#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
@@ -20,7 +21,6 @@ class Form
 
 		//Public Member Functions
    		void beSigned(const Bureaucrat &bureaucrat);
-		void signForm(const Bureaucrat &bureaucrat) const;
 
   	class GradeTooLowException : std::exception
 	{

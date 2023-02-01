@@ -2,7 +2,8 @@
 # define AForm_HPP
 
 #include <iostream>
-#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class AForm
 {
@@ -20,7 +21,6 @@ class AForm
 
 		//Public Member Functions
    		void beSigned(const Bureaucrat &bureaucrat);
-		void signAForm(const Bureaucrat &bureaucrat) const;
 		virtual void execute(Bureaucrat const &executor) = 0;
 
   	class GradeTooLowException : std::exception

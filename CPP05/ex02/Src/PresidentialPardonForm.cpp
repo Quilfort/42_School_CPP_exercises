@@ -3,18 +3,18 @@
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : AForm("PresidentialPardonForm", 25, 5), target(target)
 {
-    std::cout << "PresidentialPardonForm constructor called" << std::endl;
+    //std::cout << "PresidentialPardonForm constructor called" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &old_obj) : AForm(old_obj), target(old_obj.target)
 {
-    std::cout << "Copy PresidentialPardonForm constructor called" << std::endl;
+    //std::cout << "Copy PresidentialPardonForm constructor called" << std::endl;
     *this = old_obj;
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm &old_obj)
 {
-    std::cout << "Copy PresidentialPardonForm assignment operator called" << std::endl;
+    //std::cout << "Copy PresidentialPardonForm assignment operator called" << std::endl;
     if (this == &old_obj)
 		return *this;
     return (*this);
@@ -22,11 +22,17 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
-    std::cout << "PresidentialPardonForm Destructor called" << std::endl;
+    //std::cout << "PresidentialPardonForm Destructor called" << std::endl;
 }
 
 void PresidentialPardonForm::execute(Bureaucrat const &executor)
 {
-    std::cout << executor << std::endl;
-    std::cout << this->target << " has been pardoned by Zaphod Beeblebrox."<< std::endl;
+    if (executor.getGrade() <= this->getGradeExecute())
+    {
+        std::cout << this->target << " has been pardoned by Zaphod Beeblebrox."<< std::endl;
+    }
+    else
+    {
+        throw AForm::GradeTooLowException();
+    }
 }

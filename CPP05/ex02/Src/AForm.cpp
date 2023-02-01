@@ -1,4 +1,5 @@
 #include "AForm.hpp"
+#include "../include/Bureaucrat.hpp"
 
 AForm::AForm(const std::string &input_name, const int gradeSign, const int gradeExecute) \
     : name(input_name), gradeSign(gradeSign), gradeExecute(gradeExecute)
@@ -54,25 +55,21 @@ bool AForm::isSigned() const
 void AForm::beSigned(const Bureaucrat &bureaucrat)
 {
 
-    if (bureaucrat.getGrade() <= this->gradeExecute)
-    {
+    if (bureaucrat.getGrade() <= this->gradeSign)
         this->_signed = true;
-        this->signAForm(bureaucrat);
-    }
     else
     {
         this->_signed = false;
-        this->signAForm(bureaucrat);
         throw AForm::GradeTooLowException();
     }
 }
 
-void AForm::signAForm(const Bureaucrat &bureaucrat) const
+void AForm::execute(Bureaucrat const &executor)
 {
-    if (this->_signed == true)
-        std::cout << bureaucrat.getName() << " signed " << this->getName() << std::endl;
-    if (this->_signed == false)
-        std::cout << bureaucrat.getName() << " couldn’t sign " << this->getName() << " because ";
+    if (executor.getGrade() <= this->gradeExecute)
+        std::cout << "FORM EXECUTED" << std::endl;
+    else
+        throw AForm::GradeTooLowException();
 }
 
 // Exceptions
@@ -85,11 +82,6 @@ const char *AForm::GradeTooHighException::what(void) const throw()
 {
 	return ("Grade too high");
 };
-
-void AForm::execute(Bureaucrat const &executor)
-{
-    std::cout << executor << std::endl;
-}
 
 //insertion operator
 std::ostream& operator<<(std::ostream& o, const AForm& AForm)

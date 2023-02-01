@@ -27,6 +27,12 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor)
 {
-    std::cout << executor << std::endl;
-    std::cout << this->target << " makes drill noises"<< std::endl;
+    if (executor.getGrade() <= this->getGradeExecute())
+    {
+        std::cout << this->target << " has been pardoned by Zaphod Beeblebrox."<< std::endl;
+    }
+    else
+    {
+        throw AForm::GradeTooLowException();
+    }
 }

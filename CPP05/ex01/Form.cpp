@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form(const std::string &input_name, const int gradeSign, const int gradeExecute) \
     : name(input_name), gradeSign(gradeSign), gradeExecute(gradeExecute)
@@ -54,25 +55,13 @@ bool Form::isSigned() const
 void Form::beSigned(const Bureaucrat &bureaucrat)
 {
 
-    if (bureaucrat.getGrade() <= this->gradeExecute)
-    {
+    if (bureaucrat.getGrade() <= this->gradeSign)
         this->_signed = true;
-        this->signForm(bureaucrat);
-    }
     else
     {
         this->_signed = false;
-        this->signForm(bureaucrat);
         throw Form::GradeTooLowException();
     }
-}
-
-void Form::signForm(const Bureaucrat &bureaucrat) const
-{
-    if (this->_signed == true)
-        std::cout << bureaucrat.getName() << " signed " << this->getName() << std::endl;
-    if (this->_signed == false)
-        std::cout << bureaucrat.getName() << " couldn’t sign " << this->getName() << " because ";
 }
 
 // Exceptions
