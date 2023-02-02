@@ -1,5 +1,5 @@
 #include "../include/Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "../include/Form.hpp"
 
 Bureaucrat::Bureaucrat(const std::string &input_name, int grade) : name(input_name), grade(grade)
 {
@@ -53,31 +53,31 @@ void Bureaucrat::IncrementGrade()
     this->grade--;
 }
 
-void Bureaucrat::signForm(AForm &Aform) const
+void Bureaucrat::signForm(Form &Form) const
 {
     try
     {
-        Aform.beSigned(*this);
-        std::cout << this->getName() << " signed " << Aform.getName() << std::endl;
+        Form.beSigned(*this);
+        std::cout << this->getName() << " signed " << Form.getName() << std::endl;
     }
-    catch(AForm::GradeTooLowException& e)
+    catch(Form::GradeTooLowException& e)
     {
-        std::cout << this->getName() << " couldn’t sign " << Aform.getName() << " because " << e.what() << '\n';;
+        std::cout << this->getName() << " couldn’t sign " << Form.getName() << " because " << e.what() << '\n';;
     }
 }
 
-void Bureaucrat::executeForm(AForm &Aform)
+void Bureaucrat::executeForm(Form &Form)
 {
-    if (Aform.isSigned() == true)
+    if (Form.isSigned() == true)
     {
         try
         {
-            Aform.execute(*this);
-            std::cout << this->getName() << " executed " << Aform.getName() << std::endl;
+            Form.execute(*this);
+            std::cout << this->getName() << " executed " << Form.getName() << std::endl;
         }
-        catch(AForm::GradeTooLowException& e)
+        catch(Form::GradeTooLowException& e)
         {
-            std::cout << this->getName() << " executed couldn't " << Aform.getName() << " because " << e.what() << '\n';;
+            std::cout << this->getName() << " executed couldn't " << Form.getName() << " because " << e.what() << '\n';;
         }
     }
 }

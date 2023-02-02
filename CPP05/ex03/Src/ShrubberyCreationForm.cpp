@@ -1,13 +1,14 @@
 #include "ShrubberyCreationForm.hpp"
 #include "../include/Bureaucrat.hpp"
+#include "../include/Form.hpp"
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("ShrubberyCreationForm", 145, 137), target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : Form("ShrubberyCreationForm", 145, 137), target(target)
 {
     //std::cout << "ShrubberyCreationForm constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &old_obj) : AForm(old_obj), target(old_obj.target)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &old_obj) : Form(old_obj), target(old_obj.target)
 {
     //std::cout << "Copy ShrubberyCreationForm constructor called" << std::endl;
     *this = old_obj;
@@ -51,6 +52,6 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor)
     }
     else
     {
-        throw AForm::GradeTooLowException();
+        throw Form::GradeTooLowException();
     }
 }

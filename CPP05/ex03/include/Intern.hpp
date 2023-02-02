@@ -11,7 +11,7 @@ class Intern
 		Intern &operator=(const Intern &old_obj);
 		~Intern();
 
-		void makeForm(std::string formName, std::string target);
+		Form makeForm(std::string formName, std::string target);
 
 
 	private:

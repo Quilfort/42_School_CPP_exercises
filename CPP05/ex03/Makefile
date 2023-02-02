@@ -5,7 +5,7 @@ FLAGSPP = -std=c++98
 HEADER = -I ./include
 SRC =	./Src/main.cpp \
 		./Src/Bureaucrat.cpp \
-		./Src/AForm.cpp \
+		./Src/Form.cpp \
 		./Src/ShrubberyCreationForm.cpp \
 		./Src/RobotomyRequestForm.cpp \
 		./Src/PresidentialPardonForm.cpp \

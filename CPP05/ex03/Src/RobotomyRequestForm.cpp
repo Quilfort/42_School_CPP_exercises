@@ -2,12 +2,12 @@
 #include "../include/Bureaucrat.hpp"
 #include <cstdlib>
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm("RobotomyRequestForm", 72, 45), target(target)
+RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : Form("RobotomyRequestForm", 72, 45), target(target)
 {
     //std::cout << "RobotomyRequestForm constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &old_obj) : AForm(old_obj), target(old_obj.target)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &old_obj) : Form(old_obj), target(old_obj.target)
 {
     //std::cout << "Copy RobotomyRequestForm constructor called" << std::endl;
     *this = old_obj;
@@ -37,6 +37,6 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor)
     }
     else
     {
-        throw AForm::GradeTooLowException();
+        throw Form::GradeTooLowException();
     }
 }

@@ -2,6 +2,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "../include/Form.hpp"
 
 Intern::Intern()
 {
@@ -26,7 +27,12 @@ Intern::~Intern()
     //std::cout << "Destructor called" << std::endl;
 }
 
-void Intern::makeForm(std::string formName, std::string target)
+static Form	*makePresident(const std::string target)
+{
+	return (new PresidentialPardonForm(target));
+}
+
+Form makeForm(std::string formName, std::string target)
 {
     std::cout << "Input: " << formName << std::endl;
 
@@ -52,9 +58,8 @@ void Intern::makeForm(std::string formName, std::string target)
     switch (i) {
 		case 0:
     		std::cout << "RETURN FOR ROBOTOMY"<< std::endl;
-            break;
   		case 1:
-    		std::cout << "RETURN FOR PRESIDENTIAL"<< std::endl;
+            makePresident(target);
             break;
  		case 2:
     		std::cout << "RETURN FOR SHRUBBERY"<< std::endl;

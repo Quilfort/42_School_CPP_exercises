@@ -1,5 +1,5 @@
 #include "../include/Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "../include/Form.hpp"
 
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
@@ -12,7 +12,10 @@
 int main(void)
 {
     Intern random;
+    Bureaucrat skin("Skindred", 1);
 
-    random.makeForm("SHRUbbERY", "Run");
+    Form* pres;
+
+    pres = random.makeForm("PRESIDENTIAL", "Test");
     return EXIT_SUCCESS;
 }
