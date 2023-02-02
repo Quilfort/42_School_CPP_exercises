@@ -23,21 +23,39 @@ Intern::~Intern()
     //std::cout << "Destructor called" << std::endl;
 }
 
+//Exception
+const char *Intern::InvalidArgument::what(void) const throw()
+{
+	return ("WRONG FORM: REQUEST ROBOTOMY | PRESIDENTIAL | SHRUBBERY");
+};
+
+// Create Form
 static Form	*makePresident(const std::string target)
 {
 	return (new PresidentialPardonForm(target));
 }
 
-Form* Intern::makeForm(std::string formName, std::string target)
+static Form	*makeRobotomy(const std::string target)
 {
+	return (new RobotomyRequestForm(target));
+}
 
-    std::cout << "Input: " << formName << std::endl;
+static Form	*makeShrubbery(const std::string target)
+{
+	return (new ShrubberyCreationForm(target));
+}
 
+static std::string upperName(std::string formName)
+{
     for (size_t j = 0; j < formName.length(); j++)
         formName[j] = (char) toupper(formName[j]);
+    return (formName);
+}
 
-    std::cout << "output: " << formName << std::endl;
-    std::cout << "Target: " << target << std::endl;
+Form* Intern::makeForm(std::string formName, std::string target)
+{
+    Form* createdForm = NULL;
+    formName = upperName(formName);
 
     std::string	formArray[] = {
 		"ROBOTOMY",
@@ -54,15 +72,17 @@ Form* Intern::makeForm(std::string formName, std::string target)
     }
     switch (i) {
 		case 0:
-    		std::cout << "RETURN FOR ROBOTOMY"<< std::endl;
+    		createdForm = makeRobotomy(target);
+            break;
   		case 1:
-            makePresident(target);
+            createdForm = makePresident(target);
             break;
  		case 2:
-    		std::cout << "RETURN FOR SHRUBBERY"<< std::endl;
+    		createdForm = makeShrubbery(target);
 			break ;
 		default:
-    		std::cout << "REQUEST ROBOTOMY | PRESIDENTIAL | SHRUBBERY" << std::endl;
+    		throw Intern::InvalidArgument();
 	}
-    return (makePresident(target));
+    std::cout << "Intern created " << formArray[i] << std::endl;
+    return (createdForm);
 }

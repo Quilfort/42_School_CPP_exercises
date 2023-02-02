@@ -3,9 +3,9 @@
 
 #include <iostream>
 #include "../include/Form.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
+#include "../include/ShrubberyCreationForm.hpp"
+#include "../include/PresidentialPardonForm.hpp"
+#include "../include/RobotomyRequestForm.hpp"
 
 class Intern
 {
@@ -17,10 +17,13 @@ class Intern
 
 		Form *makeForm(std::string formName, std::string target);
 
+		class InvalidArgument : std::exception
+		{
+			public:
+				const char *what() const throw ();
+		};
 
 	private:
-
-
 
 };
 

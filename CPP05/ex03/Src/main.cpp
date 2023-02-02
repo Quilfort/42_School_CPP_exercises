@@ -1,24 +1,53 @@
 #include "../include/Bureaucrat.hpp"
 #include "../include/Form.hpp"
 
-#include "ShrubberyCreationForm.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
+#include "../include/ShrubberyCreationForm.hpp"
+#include "../include/PresidentialPardonForm.hpp"
+#include "../include/RobotomyRequestForm.hpp"
 
-#include "../include/Intern.hpp"
+#include "Intern.hpp"
 
 #include <iostream>
 
 int main(void)
 {
-    Intern random;
-    Bureaucrat skin("Skindred", 1);
+    {
+        std::cout << "---------------------------------------------------" << std::endl;
+        Intern random;
+        Bureaucrat skin("Skindred", 1);
+        Form* pres;
+        pres = random.makeForm("PRESIDENTIAL", "Obama");
+        skin.signForm(*pres);
+        skin.executeForm(*pres);
+        std::cout << "---------------------------------------------------" << std::endl;
+    }
 
-    Form* pres;
+    {
+        Intern ninja;
+        Bureaucrat kim("Kim Petras", 1);
+        Form *robot;
+        robot = ninja.makeForm("robotomy", "Wall-E");
+        kim.signForm(*robot);
+        kim.executeForm(*robot);
+        std::cout << "---------------------------------------------------" << std::endl;
+    }
 
-    pres = random.makeForm("PRESIDENTIAL", "Test");
+    {
+        Intern number;
+        Bureaucrat dorian("Dorian Electra", 1);
+        Form* shrub;
+        try
+        {
+            shrub = number.makeForm("shruery", "Willow");
+            dorian.signForm(*shrub);
+            dorian.executeForm(*shrub);
+        }
+        catch(Intern::InvalidArgument& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
+        std::cout << "---------------------------------------------------" << std::endl;
+    }
 
-    pres->execute(skin);
-    
     return EXIT_SUCCESS;
 }
