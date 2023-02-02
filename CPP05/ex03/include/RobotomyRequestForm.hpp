@@ -1,9 +1,9 @@
 #ifndef ROBOTOMY_HPP
 # define ROBOTOMY_HPP
 
-#include "AForm.hpp"
+#include "Form.hpp"
 
-class RobotomyRequestForm : public AForm
+class RobotomyRequestForm : public Form
 {
     public:
 		RobotomyRequestForm(const std::string &target);

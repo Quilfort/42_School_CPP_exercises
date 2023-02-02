@@ -1,8 +1,4 @@
 #include "Intern.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "../include/Form.hpp"
 
 Intern::Intern()
 {
@@ -32,8 +28,9 @@ static Form	*makePresident(const std::string target)
 	return (new PresidentialPardonForm(target));
 }
 
-Form makeForm(std::string formName, std::string target)
+Form* Intern::makeForm(std::string formName, std::string target)
 {
+
     std::cout << "Input: " << formName << std::endl;
 
     for (size_t j = 0; j < formName.length(); j++)
@@ -67,4 +64,5 @@ Form makeForm(std::string formName, std::string target)
 		default:
     		std::cout << "REQUEST ROBOTOMY | PRESIDENTIAL | SHRUBBERY" << std::endl;
 	}
+    return (makePresident(target));
 }

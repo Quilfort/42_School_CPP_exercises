@@ -5,7 +5,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
-#include "Intern.hpp"
+#include "../include/Intern.hpp"
 
 #include <iostream>
 
@@ -17,5 +17,8 @@ int main(void)
     Form* pres;
 
     pres = random.makeForm("PRESIDENTIAL", "Test");
+
+    pres->execute(skin);
+    
     return EXIT_SUCCESS;
 }
