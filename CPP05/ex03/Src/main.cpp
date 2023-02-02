@@ -38,7 +38,7 @@ int main(void)
         Form* shrub;
         try
         {
-            shrub = number.makeForm("shruery", "Willow");
+            shrub = number.makeForm("shrubbery", "Willow");
             dorian.signForm(*shrub);
             dorian.executeForm(*shrub);
         }

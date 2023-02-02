@@ -47,11 +47,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor)
 							   						"       |.|        | |         | |\n"
 							   						"    \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_";
     if (executor.getGrade() <= this->getGradeExecute())
-    {
         outfile << shrubbery;
-    }
     else
-    {
         throw Form::GradeTooLowException();
-    }
 }

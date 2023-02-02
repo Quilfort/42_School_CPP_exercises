@@ -29,22 +29,6 @@ const char *Intern::InvalidArgument::what(void) const throw()
 	return ("WRONG FORM: REQUEST ROBOTOMY | PRESIDENTIAL | SHRUBBERY");
 };
 
-// Create Form
-static Form	*makePresident(const std::string target)
-{
-	return (new PresidentialPardonForm(target));
-}
-
-static Form	*makeRobotomy(const std::string target)
-{
-	return (new RobotomyRequestForm(target));
-}
-
-static Form	*makeShrubbery(const std::string target)
-{
-	return (new ShrubberyCreationForm(target));
-}
-
 static std::string upperName(std::string formName)
 {
     for (size_t j = 0; j < formName.length(); j++)
@@ -72,13 +56,13 @@ Form* Intern::makeForm(std::string formName, std::string target)
     }
     switch (i) {
 		case 0:
-    		createdForm = makeRobotomy(target);
+    		createdForm = new RobotomyRequestForm(target);
             break;
   		case 1:
-            createdForm = makePresident(target);
+            createdForm = new PresidentialPardonForm(target);
             break;
  		case 2:
-    		createdForm = makeShrubbery(target);
+    		createdForm = new ShrubberyCreationForm(target);
 			break ;
 		default:
     		throw Intern::InvalidArgument();
