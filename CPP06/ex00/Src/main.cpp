@@ -22,19 +22,34 @@ int main(int argc, char const *argv[])
      }
      else if (isdigit(argv[1][0]) || (argv[1][0] == '-' && isdigit(argv[1][1])))
      {
-           printf("Char is NUM\n");
+          int i = 0;
+          try
+          {
+               while (argv[1][i] != '\0')
+               {
+                    int num = std::stoi(argv[1]);
+                    std::cout << "FUNCTION FOR INT " << num << std::endl;
+                    i++;
+               }
+          }
+          catch (std::invalid_argument)
+          {
+               try
+               {
+                    float floatNum = std::stof(argv[1]);
+                    std::cout << "FUNCTION FOR FLOAT " << floatNum << std::endl;
+                    
+               }
+               catch(std::invalid_argument)
+               {
+                    double doubleNum = std::stod(argv[1]);
+                    std::cout << "FUNCTION FOR Double " << doubleNum << std::endl;
+                    
+               }
+          }
      }
      else
           std::cout << "Argument not valid" << std::endl;
-
-
-
-
-
-
-
-
-     std::cout << argv[1] << std::endl;
 
 
      //float f = 3.4f;
@@ -47,12 +62,5 @@ int main(int argc, char const *argv[])
      //float result = static_cast<float>(test);
 
      //std::cout << result << std::endl;
-   
-
-
-
-
-     
-     
      return EXIT_SUCCESS;
 }
