@@ -1,4 +1,4 @@
-NAME = Cast
+NAME = convert
 CC = c++
 FLAGS = -Wall -Wextra -Werror
 FLAGSPP = -std=c++98
@@ -21,7 +21,7 @@ clean:
 
 
 fclean: clean
-	@echo "Delete ./Cast"
+	@echo "Delete ./convert"
 	@rm -f $(NAME)
 
 re: fclean all
