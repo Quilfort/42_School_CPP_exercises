@@ -16,40 +16,66 @@ int main(int argc, char const *argv[])
           return EXIT_FAILURE;
      }
 
-     if (isalpha(argv[1][0]))
+
+     std::string input = argv[1];
+
+     if (input.length() == 1)
      {
-          printf("CHAR IS CHAR \n");
+          std::cout << "CHAR IS 1 " << std::endl;
+          return (0);
+
      }
-     else if (isdigit(argv[1][0]) || (argv[1][0] == '-' && isdigit(argv[1][1])))
-     {
-          int i = 0;
-          try
-          {
-               while (argv[1][i] != '\0')
-               {
-                    int num = std::stoi(argv[1]);
-                    std::cout << "FUNCTION FOR INT " << num << std::endl;
-                    i++;
-               }
-          }
-          catch (std::invalid_argument)
-          {
-               try
-               {
-                    float floatNum = std::stof(argv[1]);
-                    std::cout << "FUNCTION FOR FLOAT " << floatNum << std::endl;
-                    
-               }
-               catch(std::invalid_argument)
-               {
-                    double doubleNum = std::stod(argv[1]);
-                    std::cout << "FUNCTION FOR Double " << doubleNum << std::endl;
-                    
-               }
-          }
-     }
+
+
+
+     //if (isalpha(argv[1][0]))
+     if (input.find_first_not_of("-0123456789.f") != std::string::npos)
+          std::cout << "FUNCTION FOR CHAR " << std::endl;
+     else if (input.find_first_not_of(".f") == std::string::npos)
+          std::cout << "FUNCTION FOR INT " << std::endl;
+     else if (input.find_first_not_of("f") == (std::string::npos -1))
+          std::cout << "FUNCTION FOR FLOAT " << std::endl;
      else
-          std::cout << "Argument not valid" << std::endl;
+          std::cout << "DOUBLE" << std::endl;
+     
+
+     // How to f with char
+
+
+
+
+
+
+     //else if (isdigit(argv[1][0]) || (argv[1][0] == '-' && isdigit(argv[1][1])))
+     //{
+     //     int i = 0;
+     //     try
+     //     {
+     //          while (argv[1][i] != '\0')
+     //          {
+     //               int num = std::stoi(argv[1]);
+     //               std::cout << "FUNCTION FOR INT " << num << std::endl;
+     //               i++;
+     //          }
+     //     }
+     //     catch (std::invalid_argument)
+     //     {
+     //          try
+     //          {
+     //               float floatNum = std::stof(argv[1]);
+     //               std::cout << "FUNCTION FOR FLOAT " << floatNum << std::endl;
+                    
+     //          }
+     //          catch(std::invalid_argument)
+     //          {
+     //               double doubleNum = std::stod(argv[1]);
+     //               std::cout << "FUNCTION FOR Double " << doubleNum << std::endl;
+                    
+     //          }
+     //     }
+     //}
+     //else
+     //     std::cout << "Argument not valid" << std::endl;
 
 
      //float f = 3.4f;
