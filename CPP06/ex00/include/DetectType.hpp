@@ -3,6 +3,15 @@
 
 #include <iostream>
 
+enum InputType
+{
+	CHAR,
+	INT,
+	FLOAT,
+	DOUBLE,
+	ERROR
+};
+
 class DetectType
 {
     public:
@@ -11,13 +20,15 @@ class DetectType
 		DetectType &operator=(const DetectType &old_obj);
 		~DetectType();
 
-		//void parsetype();
+		void startProgram();
+		int parseType();
 		void castChar();
 		void castInt();
 		void printConvert();
 
     private:
 		std::string input;
+		int			InputType;
 		char		c;
 		int			i;
 		float		flo;

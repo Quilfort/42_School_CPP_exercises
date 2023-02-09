@@ -6,7 +6,6 @@
 #include <cctype>
 #include <cstdlib>
 
-
 DetectType::DetectType(std::string &input) : input(input)
 {
         //std::cout << "Default constructor called" << std::endl;
@@ -30,10 +29,52 @@ DetectType::~DetectType()
     //std::cout << "Destructor called" << std::endl;
 }
 
-//void	*DetectType::parsetype(std::string input)
-//{
-//    this->input = input;
-//}
+void DetectType::startProgram()
+{
+    this->InputType = parseType();
+    std::cout << "INPUTTYPE: " << this->InputType << std::endl;
+
+    if (InputType != ERROR)
+        this->printConvert();
+    else
+         std::cout << "ERROR" << std::endl;
+}
+
+int DetectType::parseType()
+{
+    char*	end;
+    
+    if (input.length() == 1 && isalpha(input[0]))
+	{
+		this->castChar();
+        return (CHAR);
+	}
+
+    std::strtol(input.c_str(), &end, 10);
+    if (*end == '\0')
+    {
+        this->castInt();
+        return (INT);
+    }
+
+    return (ERROR);
+
+    //if (input[input.length() - 1] == 'f')
+	//{
+	//	for (size_t i = 0; i < input.length() - 1; i++)
+	//	{
+	//		if (input[i] == 'f')
+	//		{
+	//			std::cout << "INCORRECT ARGUMENGT" << std::endl;
+	//		}
+	//	}
+	//	std::cout << "FLOAT" << std::endl;
+	//}
+	//if
+	//{ 
+	//	std::cout << "DOUBLE " << std::endl;
+	//}
+}
 
 void	DetectType::castChar()
 {   
@@ -60,5 +101,3 @@ void	DetectType::printConvert()
     std::cout << "double: " << this->doub << std::endl;
 
 }
-
-
