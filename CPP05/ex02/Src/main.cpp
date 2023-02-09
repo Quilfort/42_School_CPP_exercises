@@ -1,9 +1,10 @@
 #include "../include/Bureaucrat.hpp"
+#include "AForm.hpp"
+
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
-#include "AForm.hpp"
 #include <iostream>
 
 int main (void)
@@ -59,9 +60,6 @@ int main (void)
         std::cerr << e.what() << std::endl;
     }
     std::cout << "---------------------------------------------------" << std::endl;
-    
-    
-    
-    
+
     return EXIT_SUCCESS;
 }

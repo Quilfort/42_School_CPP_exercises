@@ -23,6 +23,8 @@ $(NAME): $(OBJ)
 clean:
 	@echo "Cleaning up .o files"
 	@rm -f $(OBJ)
+	@echo "Cleaning Shrubbery File"
+	@rm -f *_shrubbery
 
 fclean: clean
 	@echo "Delete ./allForms"

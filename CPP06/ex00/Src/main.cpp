@@ -1,14 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include "DetectType.hpp"
 
 //ARGUMENT CONTROLEREN OF HET INT ETC IS
 //DOORSTUREN NAAR DE JUISTE FUNCTIE
 //STATIC CAST? PER CATEGORIE
 // https://cdn.intra.42.fr/pdf/pdf/68807/en.subject.pdf
-
-
-
 
 int main(int argc, char const *argv[])
 {
@@ -18,11 +16,18 @@ int main(int argc, char const *argv[])
 		std::cout << "Wrong amount of Arguments" << std::endl;
 		return EXIT_FAILURE;
 	}
+
 	std::string input = argv[1];
+	DetectType type(input);
+	//type.parseType(input);
+
+
 	if (input.length() == 1)
 	{
 		std::cout << "CHAR IS 1 " << std::endl;
 		std::cout << "FUNCTION FOR CHAR " << std::endl;
+		type.castChar();
+
 		// Checken if ASCII
 	}	
 	else if (input.find_first_not_of("-0123456789") == std::string::npos)
@@ -54,6 +59,12 @@ int main(int argc, char const *argv[])
 		std::cout << "DOUBLE " << std::endl;
 	}
 
+	type.printConvert();
+
+
+	return EXIT_SUCCESS;
+}
+
      //else if (input.find_first_not_of("f") == std::string::npos)
      //     std::cout << "FUNCTION FOR FLOAT " << std::endl;
      //else
@@ -81,5 +92,3 @@ int main(int argc, char const *argv[])
      //float result = static_cast<float>(test);
 
      //std::cout << result << std::endl;
-     return EXIT_SUCCESS;
-}
