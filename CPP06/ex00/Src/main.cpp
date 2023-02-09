@@ -24,11 +24,10 @@ int main(int argc, char const *argv[])
 
 	if (input.length() == 1)
 	{
-		std::cout << "CHAR IS 1 " << std::endl;
-		std::cout << "FUNCTION FOR CHAR " << std::endl;
+		// Checken if ASCII
 		type.castChar();
 
-		// Checken if ASCII
+
 	}	
 	else if (input.find_first_not_of("-0123456789") == std::string::npos)
 	{
@@ -40,7 +39,8 @@ int main(int argc, char const *argv[])
 				return (EXIT_FAILURE);
 			}
 		}
-		std::cout << "FUNCTION FOR INT " << std::endl;
+		type.castInt();
+		//std::cout << "FUNCTION FOR INT " << std::endl;
 	}
 	else if (input[input.length() - 1] == 'f')
 	{

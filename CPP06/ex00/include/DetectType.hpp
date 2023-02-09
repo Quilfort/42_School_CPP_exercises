@@ -13,6 +13,7 @@ class DetectType
 
 		//void parsetype();
 		void castChar();
+		void castInt();
 		void printConvert();
 
     private:
