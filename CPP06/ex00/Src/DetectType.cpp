@@ -58,22 +58,6 @@ int DetectType::parseType()
     }
 
     return (ERROR);
-
-    //if (input[input.length() - 1] == 'f')
-	//{
-	//	for (size_t i = 0; i < input.length() - 1; i++)
-	//	{
-	//		if (input[i] == 'f')
-	//		{
-	//			std::cout << "INCORRECT ARGUMENGT" << std::endl;
-	//		}
-	//	}
-	//	std::cout << "FLOAT" << std::endl;
-	//}
-	//if
-	//{ 
-	//	std::cout << "DOUBLE " << std::endl;
-	//}
 }
 
 void	DetectType::castChar()
@@ -93,11 +77,18 @@ void	DetectType::castInt()
     this->doub = static_cast<double>(i);
 }
 
+//void	DetectType::castFloat()
+//{   
+//	this->flo = static_cast<float>(atof(this->input.c_str()));
+//    this->i = static_cast<long int>(flo);
+//    this->c = static_cast<char>(flo);
+//    this->doub = static_cast<double>(flo);
+//}
+
 void	DetectType::printConvert()
 {
     std::cout << "char: " << this->c << std::endl;
     std::cout << "int: " << this->i << std::endl;
-    std::cout << "float: " << this->flo << std::endl;
-    std::cout << "double: " << this->doub << std::endl;
-
+    std::cout << "float: " << this->flo << ".0f" << std::endl;
+    std::cout << "double: " << this->doub << ".00" << std::endl;
 }

@@ -24,6 +24,8 @@ class DetectType
 		int parseType();
 		void castChar();
 		void castInt();
+		void castFloat();
+
 		void printConvert();
 
     private:

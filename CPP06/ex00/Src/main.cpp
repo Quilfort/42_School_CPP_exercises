@@ -1,9 +1,5 @@
 #include <iostream>
 #include <string>
-#include <limits>
-#include <iomanip>
-#include <cctype>
-#include <cstdlib>
 
 #include "DetectType.hpp"
 
