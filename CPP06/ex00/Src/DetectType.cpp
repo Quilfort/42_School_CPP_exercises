@@ -34,6 +34,15 @@ void DetectType::startProgram()
     this->InputType = parseType();
     std::cout << "INPUTTYPE: " << this->InputType << std::endl;
 
+    if (InputType == CHAR)
+        this->castChar();
+    else if (InputType == INT)
+        this->castInt();
+    else if (InputType == DOUBLE)
+        this->castDouble();
+    else if (InputType == FLOAT)
+        this->castFloat();
+
     if (InputType != ERROR)
         this->printConvert();
     else
@@ -45,31 +54,18 @@ int DetectType::parseType()
     char*	end;
     
     if (input.length() == 1 && isalpha(input[0]))
-	{
-		this->castChar();
         return (CHAR);
-	}
 
     std::strtol(input.c_str(), &end, 10);
     if (*end == '\0')
-    {
-        this->castInt();
         return (INT);
-    }
     std::strtof(input.c_str(), &end);
     if (*end == '\0')
-    {
-        this->castDouble();
         return (DOUBLE);
-    }
-
     std::strtof(input.c_str(), &end);
-    if (*end == 'f' && end[input.length() + 1] == '\0')
-    {
-        this->castFloat();
+    if ((*end == 'f' && end[input.length() + 1] == '\0') || \
+            input.compare("-inff") == 0 || input.compare("inff") == 0 || input.compare("nanf") == 0)
         return (FLOAT);
-    }
-
     return (ERROR);
 }
 

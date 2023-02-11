@@ -7,8 +7,8 @@ enum InputType
 {
 	CHAR,
 	INT,
-	FLOAT,
 	DOUBLE,
+	FLOAT,
 	ERROR
 };
 
