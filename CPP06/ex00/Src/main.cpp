@@ -3,8 +3,6 @@
 
 #include "DetectType.hpp"
 
-// https://cdn.intra.42.fr/pdf/pdf/68807/en.subject.pdf
-
 int main(int argc, char const *argv[])
 {
      
