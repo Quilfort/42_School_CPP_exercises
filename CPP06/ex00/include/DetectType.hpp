@@ -20,11 +20,12 @@ class DetectType
 		DetectType &operator=(const DetectType &old_obj);
 		~DetectType();
 
-		void startProgram();
-		int parseType();
-		void castChar();
-		void castInt();
-		void castFloat();
+		void	startProgram();
+		int		parseType();
+		void 	castChar();
+		void 	castInt();
+		void 	castDouble();
+		void 	castFloat();
 
 		void printConvert();
 

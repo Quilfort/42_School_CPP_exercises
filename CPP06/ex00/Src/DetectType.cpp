@@ -56,6 +56,19 @@ int DetectType::parseType()
         this->castInt();
         return (INT);
     }
+    std::strtof(input.c_str(), &end);
+    if (*end == '\0')
+    {
+        this->castDouble();
+        return (DOUBLE);
+    }
+
+    std::strtof(input.c_str(), &end);
+    if (*end == 'f' && end[input.length() + 1] == '\0')
+    {
+        this->castFloat();
+        return (FLOAT);
+    }
 
     return (ERROR);
 }
@@ -77,13 +90,22 @@ void	DetectType::castInt()
     this->doub = static_cast<double>(i);
 }
 
-//void	DetectType::castFloat()
-//{   
-//	this->flo = static_cast<float>(atof(this->input.c_str()));
-//    this->i = static_cast<long int>(flo);
-//    this->c = static_cast<char>(flo);
-//    this->doub = static_cast<double>(flo);
-//}
+void	DetectType::castDouble()
+{   
+   
+	this->doub = static_cast<float>(atof(this->input.c_str()));
+    this->c = static_cast<char>(doub);
+    this->i = static_cast<long int>(doub);
+	this->flo = static_cast<float>(doub);
+}
+
+void	DetectType::castFloat()
+{   
+	this->flo = static_cast<float>(atof(this->input.c_str()));
+    this->i = static_cast<long int>(flo);
+    this->c = static_cast<char>(flo);
+    this->doub = static_cast<double>(flo);
+}
 
 void	DetectType::printConvert()
 {
