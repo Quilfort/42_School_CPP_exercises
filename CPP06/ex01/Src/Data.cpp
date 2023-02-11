@@ -1,7 +1,7 @@
 #include "Data.hpp"
 
 // Constructors
-Data::Data() : secret("BOTWISAOKEGAME")
+Data::Data() : secret("BOTW IS A OKE GAME")
 {
 	//std::cout << "Default Constructor called of Data" << std::endl;
 }
@@ -23,4 +23,9 @@ Data & Data::operator=(const Data &assign)
 Data::~Data()
 {
 	//std::cout << "Destructor called of Data" << std::endl;
+}
+
+void Data::printSecret()
+{
+	std::cout << "My Secret is " << this->secret << std::endl;
 }

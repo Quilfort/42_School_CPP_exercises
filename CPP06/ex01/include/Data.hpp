@@ -16,6 +16,8 @@ class Data
 		
 		// Operators
 		Data & operator=(const Data &assign);
+
+		void printSecret();
 		
 	private:
 		std::string secret;
