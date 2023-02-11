@@ -22,18 +22,27 @@ class DetectType
 
 		void	startProgram();
 		int		parseType();
+		void	printConvert();
+
+		// Casting
 		void 	castChar();
 		void 	castInt();
 		void 	castDouble();
 		void 	castFloat();
 
-		void printConvert();
+		// Printing
+		void 	printChar();
+		void 	printInt();
+		void 	printDouble();
+		void 	printFloat();
+		
 
     private:
 		std::string input;
 		int			InputType;
 		char		c;
-		int			i;
+		long int	i;
+		int			print_i;
 		float		flo;
 		double		doub;
 };

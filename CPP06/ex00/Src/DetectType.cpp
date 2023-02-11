@@ -32,7 +32,6 @@ DetectType::~DetectType()
 void DetectType::startProgram()
 {
     this->InputType = parseType();
-    std::cout << "INPUTTYPE: " << this->InputType << std::endl;
 
     if (InputType == CHAR)
         this->castChar();
@@ -46,7 +45,7 @@ void DetectType::startProgram()
     if (InputType != ERROR)
         this->printConvert();
     else
-         std::cout << "ERROR" << std::endl;
+         std::cout << "ERROR: INCORRECT INPUT || TRY AGAIN" << std::endl;
 }
 
 int DetectType::parseType()
@@ -69,6 +68,15 @@ int DetectType::parseType()
     return (ERROR);
 }
 
+void	DetectType::printConvert()
+{
+    printChar();
+    printInt();
+    printFloat();
+    printDouble();
+}
+
+// CASTING
 void	DetectType::castChar()
 {   
     this->c = static_cast<char>(this->input[0]);
@@ -103,10 +111,45 @@ void	DetectType::castFloat()
     this->doub = static_cast<double>(flo);
 }
 
-void	DetectType::printConvert()
+//PRINTING
+void	DetectType::printChar()
 {
-    std::cout << "char: " << this->c << std::endl;
-    std::cout << "int: " << this->i << std::endl;
-    std::cout << "float: " << this->flo << ".0f" << std::endl;
-    std::cout << "double: " << this->doub << ".00" << std::endl;
+    std::cout << "char: ";
+    if (isprint(this->c) && (this->i <= INT_MAX && this->i >= INT_MIN))
+        std::cout << this->c << std::endl;
+    else if (isascii(this->c) && (this->i <= INT_MAX && this->i >= INT_MIN))
+        std::cout << "Non displayable" << std::endl;
+    else
+		std::cout << "impossible" << std::endl;
 }
+
+void	DetectType::printInt()
+{
+    std::cout << "int: ";
+    if (this->i <= INT_MAX && this->i >= INT_MIN)
+    {
+        this->print_i = static_cast<int>(this->i);
+		std::cout<< this->i << std::endl;
+    }
+    else
+        std::cout << "impossible" << std::endl;
+}
+
+void	DetectType::printFloat()
+{
+    std::cout << std::fixed;
+	std::cout << std::setprecision(1);
+	std::cout << "float: ";
+    std::cout << this->flo << "f" << std::endl;
+}
+
+void	DetectType::printDouble()
+{
+    std::cout << std::fixed;
+	std::cout << std::setprecision(1);
+	std::cout << "double: ";
+    std::cout << this->doub << std::endl;
+}
+
+//Fixed: write floating-point values in fixed-point notation
+//setpreciosion: correct to 1 decemal number
