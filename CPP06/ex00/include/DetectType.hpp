@@ -15,7 +15,7 @@ enum InputType
 class DetectType
 {
     public:
-    	DetectType(std::string &input);
+    	DetectType(std::string input);
 		DetectType(const DetectType &old_obj);
 		DetectType &operator=(const DetectType &old_obj);
 		~DetectType();

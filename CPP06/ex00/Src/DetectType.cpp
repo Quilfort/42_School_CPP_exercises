@@ -6,7 +6,7 @@
 #include <cctype>
 #include <cstdlib>
 
-DetectType::DetectType(std::string &input) : input(input)
+DetectType::DetectType(std::string input) : input(input)
 {
         //std::cout << "Default constructor called" << std::endl;
 }
@@ -52,9 +52,8 @@ int DetectType::parseType()
 {
     char*	end;
     
-    if (input.length() == 1 && isalpha(input[0]))
+    if (input.length() == 1 && (input.find_first_not_of("-0123456789") != std::string::npos))
         return (CHAR);
-
     std::strtol(input.c_str(), &end, 10);
     if (*end == '\0')
         return (INT);
