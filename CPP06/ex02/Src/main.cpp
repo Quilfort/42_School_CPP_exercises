@@ -77,4 +77,5 @@ int main()
     
     identify(random);
     identify(*random);
+    return (EXIT_SUCCESS);
 }

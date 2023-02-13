@@ -11,4 +11,5 @@ int main (void)
 	std::string arnold[4] = {"GET", "TO" , "THE", "CHOPPA"};
 	::iter(arnold, 4, callElement);
 	std::cout << "---------------------------------------------------" << std::endl;
+	return (EXIT_SUCCESS);
 }

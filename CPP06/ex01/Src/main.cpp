@@ -49,10 +49,5 @@ int main(void)
 	std::cout << "Deserialized Data" << std::endl;
 	std::cout << "---------------------------------------------------" << std::endl;
 	deserial->printSecret();
-
-
-
-
-
-
+	return (EXIT_SUCCESS);
 }

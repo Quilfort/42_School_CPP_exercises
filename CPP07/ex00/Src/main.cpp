@@ -41,4 +41,5 @@ int main()
     std::cout << "---------------------------------------------------" << std::endl;
     std::cout << "MIN: " << ::min(c,d) << std::endl;
     std::cout << "MAX: " << ::max(c,d) << std::endl;
+    return (EXIT_SUCCESS);
 }

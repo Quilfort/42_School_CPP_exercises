@@ -1,0 +1,9 @@
+#include "../include/Array.hpp"
+
+
+// CHECKEN OF IK TPP FILES AAN HET WERK KRIJG
+// ANDERS ALLE FUNCTIES IN HEADER WANT TPP IS OPTIONEEL.
+
+Array<T>::Array()
+{
+}
