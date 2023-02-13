@@ -3,7 +3,8 @@ CC = c++
 FLAGS = -Wall -Wextra -Werror
 FLAGSPP = -std=c++98
 HEADER = -I ./include
-SRC =	./Src/main.cpp
+SRC =	./Src/main.cpp \
+		./Src/Base.cpp
 
 OBJ = $(SRC:%.cpp=%.o)
 
