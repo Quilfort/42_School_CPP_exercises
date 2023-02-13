@@ -8,12 +8,29 @@
 
 Base * generate(void)
 {
-    // Random 0 - 2 A / B / C
-    // Return NULL when failed
-    //return (new A());
-    //return (new B());
-    return (new C());
-    //return (NULL);
+    std::srand((unsigned) std::time(NULL));
+    int number = std::rand() % 3;
+
+    if (number == 0)
+    {
+        std::cout << "BASE A ACTIVATED" << std::endl;
+        return (new A());
+    }
+    else if (number == 1)
+    {
+        std::cout << "BASE B ACTIVATED" << std::endl;
+        return (new B());
+    }
+    else if (number == 2)
+    {
+        std::cout << "BASE C ACTIVATED" << std::endl;
+        return (new C());
+    }
+    else
+    {
+        std::cout << "BASE CREATION FAILED" << std::endl;
+        return (NULL);
+    }
 }
 
 void identify(Base* p)
@@ -28,11 +45,39 @@ void identify(Base* p)
         std::cout << "ERROR" << std::endl;
 }
 
+void identify(Base& p)
+{
+    try
+    {
+        (void)dynamic_cast<A&>(p);
+        std::cout << "A" << std::endl;
+    }
+    catch(std::bad_cast)
+    { 
+        try
+        {
+            (void)dynamic_cast<B&>(p);
+            std::cout << "B" << std::endl;
+        }
+        catch(std::bad_cast)
+        {
+            try
+            {
+                (void)dynamic_cast<C&>(p);
+                std::cout << "C" << std::endl;
+            }
+            catch(std::bad_cast)
+            {
+                std::cout << "ERROR" << std::endl;
+            } 
+        }
+    }  
+}
+
 int main()
 {
     Base* random = generate();
-
-    //std::cout << random << std::endl;
+    
     identify(random);
-
+    identify(*random);
 }
