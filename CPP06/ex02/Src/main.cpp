@@ -1,6 +1,3 @@
-// https://cdn.intra.42.fr/pdf/pdf/68807/en.subject.pdf
-//dynamic cast
-
 #include "Base.hpp"
 #include "A.hpp"
 #include "B.hpp"
@@ -69,7 +66,7 @@ void identify(Base& p)
             catch(std::bad_cast)
             {
                 std::cout << "ERROR" << std::endl;
-            } 
+            }
         }
     }  
 }
