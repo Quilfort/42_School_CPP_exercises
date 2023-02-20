@@ -50,7 +50,7 @@ int main()
 	std::cout << "---------------------------------------------------" << std::endl;
 	std::cout << "---------------------------------------------------" << std::endl;
 
-    //Onderstaande code is niet meer mogelijk omdat door virtual = 0 de class abstract is geworden en
+    //Code below is not possible because Animal is absrtract virtual = 0
     // nobody can instantiate it
     
     //const Animal* meta = new Animal();
