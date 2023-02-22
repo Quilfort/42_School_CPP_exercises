@@ -54,7 +54,6 @@ bool Form::isSigned() const
 // Member Function
 void Form::beSigned(const Bureaucrat &bureaucrat)
 {
-
     if (bureaucrat.getGrade() <= this->gradeSign)
         this->_signed = true;
     else

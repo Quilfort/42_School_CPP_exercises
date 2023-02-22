@@ -19,25 +19,16 @@ class Bureaucrat
 		void IncrementGrade();
 		void DecrementGrade();
 
-
-
-
 		class GradeTooLowException : std::exception
 		{
 			public:
 				const char *what() const throw ();
-				//{
-				//	return "Grade is to low";
-				//}
 		};
 
 		class GradeTooHighException : std::exception
 		{
 			public:
 				const char *what() const throw ();
-				//{
-				//	return "Grade is to high";
-				//}
 		};
 
     private:

@@ -31,7 +31,6 @@ AForm::~AForm()
 }
 
 //Getters
-
 std::string AForm::getName() const
 {
     return (this->name);

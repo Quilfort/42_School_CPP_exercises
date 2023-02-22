@@ -8,9 +8,7 @@ Contact::Contact()
 static	std::string small_format(std::string string)
 {
 	if (string.size() > 10)
-	{
 		return(string.substr(0,9) + ".");
-	}
 	else
 		return (string);
 }

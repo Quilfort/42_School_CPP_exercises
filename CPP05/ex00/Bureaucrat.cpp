@@ -7,7 +7,6 @@ Bureaucrat::Bureaucrat(const std::string &input_name, int grade) : name(input_na
         throw Bureaucrat::GradeTooHighException();
     if (grade > 150)
         throw Bureaucrat::GradeTooLowException();
-    
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &old_obj)

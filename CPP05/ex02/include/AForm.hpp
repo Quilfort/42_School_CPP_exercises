@@ -35,7 +35,6 @@ class AForm
 			const char *what() const throw ();
 	};
 
-		
     private:
         const std::string name;
         bool _signed;
