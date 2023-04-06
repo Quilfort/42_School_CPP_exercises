@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "DetectType.hpp"
+#include "ScalarConverter.hpp"
 
 int main(int argc, char const *argv[])
 {
@@ -12,7 +12,7 @@ int main(int argc, char const *argv[])
 		return EXIT_FAILURE;
 	}
 	std::string input = argv[1];
-	DetectType type(input);
+	ScalarConverter type(input);
 	type.startProgram();
 	return EXIT_SUCCESS;
 }

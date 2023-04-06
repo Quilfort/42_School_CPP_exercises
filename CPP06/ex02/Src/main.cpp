@@ -5,6 +5,8 @@
 
 Base * generate(void)
 {
+    // Onderstaande regel is in functie hetzelfde maar in main niet
+    // als je generate in main meerdere keren oproept
     std::srand((unsigned) std::time(NULL));
     int number = std::rand() % 3;
 
@@ -73,9 +75,11 @@ void identify(Base& p)
 
 int main()
 {
+
     Base* random = generate();
     
     identify(random);
     identify(*random);
+
     return (EXIT_SUCCESS);
 }

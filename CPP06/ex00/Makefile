@@ -4,7 +4,7 @@ FLAGS = -Wall -Wextra -Werror
 FLAGSPP = -std=c++98
 HEADER = -I ./include
 SRC =	./Src/main.cpp \
-		./Src/DetectType.cpp \
+		./Src/ScalarConverter.cpp \
 
 		
 OBJ = $(SRC:%.cpp=%.o)

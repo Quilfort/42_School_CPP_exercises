@@ -17,6 +17,7 @@ Cat& Cat::operator=(const Cat &old_obj)
 {
     std::cout << "Copy Cat assignment operator called" << std::endl;
     this->type = old_obj.type;
+    this->brain = new Brain(*old_obj.brain);
     return (*this);
 }
 

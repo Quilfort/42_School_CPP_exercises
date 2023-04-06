@@ -1,4 +1,4 @@
-#include "DetectType.hpp"
+#include "ScalarConverter.hpp"
 #include <iostream>
 #include <string>
 #include <limits>
@@ -6,30 +6,30 @@
 #include <cctype>
 #include <cstdlib>
 
-DetectType::DetectType(std::string input) : input(input)
+ScalarConverter::ScalarConverter(std::string input) : input(input)
 {
         //std::cout << "Default constructor called" << std::endl;
 }
 
-DetectType::DetectType(const DetectType &old_obj)
+ScalarConverter::ScalarConverter(const ScalarConverter &old_obj)
 {
     //std::cout << "Copy constructor called" << std::endl;
     *this = old_obj;
 }
 
-DetectType& DetectType::operator=(const DetectType &old_obj)
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter &old_obj)
 {
     //std::cout << "Copy assignment operator called" << std::endl;
     (void) old_obj;
     return (*this);
 }
 
-DetectType::~DetectType()
+ScalarConverter::~ScalarConverter()
 {
     //std::cout << "Destructor called" << std::endl;
 }
 
-void DetectType::startProgram()
+void ScalarConverter::startProgram()
 {
     this->InputType = parseType();
 
@@ -48,7 +48,7 @@ void DetectType::startProgram()
          std::cout << "ERROR: INCORRECT INPUT || TRY AGAIN" << std::endl;
 }
 
-int DetectType::parseType()
+int ScalarConverter::parseType()
 {
     char*	end;
     
@@ -67,7 +67,7 @@ int DetectType::parseType()
     return (ERROR);
 }
 
-void	DetectType::printConvert()
+void	ScalarConverter::printConvert()
 {
     printChar();
     printInt();
@@ -76,7 +76,7 @@ void	DetectType::printConvert()
 }
 
 // CASTING
-void	DetectType::castChar()
+void	ScalarConverter::castChar()
 {   
     this->c = static_cast<char>(this->input[0]);
 	this->i = static_cast<long int>(c);
@@ -84,7 +84,7 @@ void	DetectType::castChar()
     this->doub = static_cast<double>(c);
 }
 
-void	DetectType::castInt()
+void	ScalarConverter::castInt()
 {   
    
 	this->i = static_cast<long int>(atol(this->input.c_str()));
@@ -93,7 +93,7 @@ void	DetectType::castInt()
     this->doub = static_cast<double>(i);
 }
 
-void	DetectType::castDouble()
+void	ScalarConverter::castDouble()
 {   
    
 	this->doub = static_cast<float>(atof(this->input.c_str()));
@@ -102,7 +102,7 @@ void	DetectType::castDouble()
 	this->flo = static_cast<float>(doub);
 }
 
-void	DetectType::castFloat()
+void	ScalarConverter::castFloat()
 {   
 	this->flo = static_cast<float>(atof(this->input.c_str()));
     this->i = static_cast<long int>(flo);
@@ -111,7 +111,7 @@ void	DetectType::castFloat()
 }
 
 //PRINTING
-void	DetectType::printChar()
+void	ScalarConverter::printChar()
 {
     std::cout << "char: ";
     if (isprint(this->c) && (this->i <= INT_MAX && this->i >= INT_MIN))
@@ -122,7 +122,7 @@ void	DetectType::printChar()
 		std::cout << "impossible" << std::endl;
 }
 
-void	DetectType::printInt()
+void	ScalarConverter::printInt()
 {
     std::cout << "int: ";
     if (this->i <= INT_MAX && this->i >= INT_MIN)
@@ -134,7 +134,7 @@ void	DetectType::printInt()
         std::cout << "impossible" << std::endl;
 }
 
-void	DetectType::printFloat()
+void	ScalarConverter::printFloat()
 {
     std::cout << std::fixed;
 	std::cout << std::setprecision(1);
@@ -142,7 +142,7 @@ void	DetectType::printFloat()
     std::cout << this->flo << "f" << std::endl;
 }
 
-void	DetectType::printDouble()
+void	ScalarConverter::printDouble()
 {
     std::cout << std::fixed;
 	std::cout << std::setprecision(1);

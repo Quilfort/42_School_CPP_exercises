@@ -1,5 +1,5 @@
-#ifndef DETECT_HPP
-# define DETECT_HPP
+#ifndef SCALER_HPP
+# define SCALER_HPP
 
 #include <iostream>
 
@@ -12,13 +12,15 @@ enum InputType
 	ERROR
 };
 
-class DetectType
+// Static Class, all var static maken
+// Write a static class ScalarConverter
+class ScalarConverter
 {
     public:
-    	DetectType(std::string input);
-		DetectType(const DetectType &old_obj);
-		DetectType &operator=(const DetectType &old_obj);
-		~DetectType();
+    	ScalarConverter(std::string input);
+		ScalarConverter(const ScalarConverter &old_obj);
+		ScalarConverter &operator=(const ScalarConverter &old_obj);
+		~ScalarConverter();
 
 		void	startProgram();
 		int		parseType();
