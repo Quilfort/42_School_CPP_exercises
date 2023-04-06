@@ -29,7 +29,7 @@ ScalarConverter::~ScalarConverter()
     //std::cout << "Destructor called" << std::endl;
 }
 
-void ScalarConverter::startProgram()
+void ScalarConverter::convert()
 {
     this->InputType = parseType();
 

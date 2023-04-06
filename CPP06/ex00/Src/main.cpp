@@ -13,6 +13,6 @@ int main(int argc, char const *argv[])
 	}
 	std::string input = argv[1];
 	ScalarConverter type(input);
-	type.startProgram();
+	type.convert();
 	return EXIT_SUCCESS;
 }

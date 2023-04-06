@@ -12,8 +12,6 @@ enum InputType
 	ERROR
 };
 
-// Static Class, all var static maken
-// Write a static class ScalarConverter
 class ScalarConverter
 {
     public:
@@ -22,7 +20,7 @@ class ScalarConverter
 		ScalarConverter &operator=(const ScalarConverter &old_obj);
 		~ScalarConverter();
 
-		void	startProgram();
+		void	convert();
 		int		parseType();
 		void	printConvert();
 
