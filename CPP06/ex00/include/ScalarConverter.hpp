@@ -2,6 +2,8 @@
 # define SCALER_HPP
 
 #include <iostream>
+#include <string>
+#include <iomanip>
 
 enum InputType
 {
@@ -15,13 +17,17 @@ enum InputType
 class ScalarConverter
 {
     public:
-
-		static ScalarConverter& GetInstance(std::string input)
-		{
-			static ScalarConverter instance(input);
-			return instance;
-		}
-		static void	convert();
+		static void	convert(std::string string);
+	
+    private:
+		static std::string 	input;
+		static int			InputType;
+		static char			c;
+		static long int		i;
+		static int			print_i;
+		static float		flo;
+		static double		doub;
+		
 		static int	parseType();
 		static void	printConvert();
 
@@ -36,20 +42,14 @@ class ScalarConverter
 		static void 	printInt();
 		static void 	printDouble();
 		static void 	printFloat();	
-
-    private:
-		ScalarConverter(std::string input);
+		
+		ScalarConverter();
 		~ScalarConverter();
 		ScalarConverter(const ScalarConverter &old_obj);
 		ScalarConverter &operator=(const ScalarConverter &old_obj);
 
-		static std::string 	input;
-		static int			InputType;
-		static char			c;
-		static long int		i;
-		static int			print_i;
-		static float		flo;
-		static double		doub;
+
+		
 };
 
 #endif  

@@ -1,22 +1,7 @@
 #include "ScalarConverter.hpp"
-#include <iostream>
-#include <string>
-#include <limits>
-#include <iomanip>
-#include <cctype>
-#include <cstdlib>
 
-int			ScalarConverter::InputType = 0;
-char 		ScalarConverter::c = '\0';
-long int	ScalarConverter::i = 0;
-int			ScalarConverter::print_i = 0;
-float		ScalarConverter::flo = 0.0f;
-double		ScalarConverter::doub = 0.0;
-std::string	ScalarConverter::input = "";
-
-ScalarConverter::ScalarConverter(std::string string)
+ScalarConverter::ScalarConverter()
 {
-        input = string;
         //std::cout << "Default constructor called" << std::endl;
 }
 
@@ -29,7 +14,13 @@ ScalarConverter::ScalarConverter(const ScalarConverter &old_obj)
 ScalarConverter& ScalarConverter::operator=(const ScalarConverter &old_obj)
 {
     //std::cout << "Copy assignment operator called" << std::endl;
-    (void) old_obj;
+    InputType = old_obj.InputType;
+    c = old_obj.c;
+    i = old_obj.i;
+    print_i = old_obj.print_i;
+    flo = old_obj.flo;
+    doub = old_obj.doub;
+    input = old_obj.input;
     return (*this);
 }
 
@@ -38,8 +29,10 @@ ScalarConverter::~ScalarConverter()
     //std::cout << "Destructor called" << std::endl;
 }
 
-void ScalarConverter::convert()
+void ScalarConverter::convert(std::string string)
 {
+    input = string;
+    
     InputType = parseType();
 
     if (InputType == CHAR)
@@ -95,7 +88,6 @@ void	ScalarConverter::castChar()
 
 void	ScalarConverter::castInt()
 {   
-   
 	i = static_cast<long int>(atol(input.c_str()));
     c = static_cast<char>(i);
 	flo = static_cast<float>(i);
@@ -104,7 +96,6 @@ void	ScalarConverter::castInt()
 
 void	ScalarConverter::castDouble()
 {   
-   
 	doub = static_cast<float>(atof(input.c_str()));
     c = static_cast<char>(doub);
     i = static_cast<long int>(doub);
@@ -158,6 +149,3 @@ void	ScalarConverter::printDouble()
 	std::cout << "double: ";
     std::cout << doub << std::endl;
 }
-
-//Fixed: write floating-point values in fixed-point notation
-//setpreciosion: correct to 1 decemal number
