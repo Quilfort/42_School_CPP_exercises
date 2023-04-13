@@ -6,8 +6,17 @@
 #include <cctype>
 #include <cstdlib>
 
-ScalarConverter::ScalarConverter(std::string input) : input(input)
+int			ScalarConverter::InputType = 0;
+char 		ScalarConverter::c = '\0';
+long int	ScalarConverter::i = 0;
+int			ScalarConverter::print_i = 0;
+float		ScalarConverter::flo = 0.0f;
+double		ScalarConverter::doub = 0.0;
+std::string	ScalarConverter::input = "";
+
+ScalarConverter::ScalarConverter(std::string string)
 {
+        input = string;
         //std::cout << "Default constructor called" << std::endl;
 }
 
@@ -31,19 +40,19 @@ ScalarConverter::~ScalarConverter()
 
 void ScalarConverter::convert()
 {
-    this->InputType = parseType();
+    InputType = parseType();
 
     if (InputType == CHAR)
-        this->castChar();
+        castChar();
     else if (InputType == INT)
-        this->castInt();
+        castInt();
     else if (InputType == DOUBLE)
-        this->castDouble();
+        castDouble();
     else if (InputType == FLOAT)
-        this->castFloat();
+        castFloat();
 
     if (InputType != ERROR)
-        this->printConvert();
+        printConvert();
     else
          std::cout << "ERROR: INCORRECT INPUT || TRY AGAIN" << std::endl;
 }
@@ -78,45 +87,45 @@ void	ScalarConverter::printConvert()
 // CASTING
 void	ScalarConverter::castChar()
 {   
-    this->c = static_cast<char>(this->input[0]);
-	this->i = static_cast<long int>(c);
-	this->flo = static_cast<float>(c);
-    this->doub = static_cast<double>(c);
+    c = static_cast<char>(input[0]);
+	i = static_cast<long int>(c);
+	flo = static_cast<float>(c);
+    doub = static_cast<double>(c);
 }
 
 void	ScalarConverter::castInt()
 {   
    
-	this->i = static_cast<long int>(atol(this->input.c_str()));
-    this->c = static_cast<char>(i);
-	this->flo = static_cast<float>(i);
-    this->doub = static_cast<double>(i);
+	i = static_cast<long int>(atol(input.c_str()));
+    c = static_cast<char>(i);
+	flo = static_cast<float>(i);
+    doub = static_cast<double>(i);
 }
 
 void	ScalarConverter::castDouble()
 {   
    
-	this->doub = static_cast<float>(atof(this->input.c_str()));
-    this->c = static_cast<char>(doub);
-    this->i = static_cast<long int>(doub);
-	this->flo = static_cast<float>(doub);
+	doub = static_cast<float>(atof(input.c_str()));
+    c = static_cast<char>(doub);
+    i = static_cast<long int>(doub);
+	flo = static_cast<float>(doub);
 }
 
 void	ScalarConverter::castFloat()
 {   
-	this->flo = static_cast<float>(atof(this->input.c_str()));
-    this->i = static_cast<long int>(flo);
-    this->c = static_cast<char>(flo);
-    this->doub = static_cast<double>(flo);
+	flo = static_cast<float>(atof(input.c_str()));
+    i = static_cast<long int>(flo);
+    c = static_cast<char>(flo);
+    doub = static_cast<double>(flo);
 }
 
 //PRINTING
 void	ScalarConverter::printChar()
 {
     std::cout << "char: ";
-    if (isprint(this->c) && (this->i <= INT_MAX && this->i >= INT_MIN))
-        std::cout << this->c << std::endl;
-    else if (isascii(this->c) && (this->i <= INT_MAX && this->i >= INT_MIN))
+    if (isprint(c) && (i <= INT_MAX && i >= INT_MIN))
+        std::cout << c << std::endl;
+    else if (isascii(c) && (i <= INT_MAX && i >= INT_MIN))
         std::cout << "Non displayable" << std::endl;
     else
 		std::cout << "impossible" << std::endl;
@@ -125,10 +134,10 @@ void	ScalarConverter::printChar()
 void	ScalarConverter::printInt()
 {
     std::cout << "int: ";
-    if (this->i <= INT_MAX && this->i >= INT_MIN)
+    if (i <= INT_MAX && i >= INT_MIN)
     {
-        this->print_i = static_cast<int>(this->i);
-		std::cout<< this->i << std::endl;
+        print_i = static_cast<int>(i);
+		std::cout<< i << std::endl;
     }
     else
         std::cout << "impossible" << std::endl;
@@ -139,7 +148,7 @@ void	ScalarConverter::printFloat()
     std::cout << std::fixed;
 	std::cout << std::setprecision(1);
 	std::cout << "float: ";
-    std::cout << this->flo << "f" << std::endl;
+    std::cout << flo << "f" << std::endl;
 }
 
 void	ScalarConverter::printDouble()
@@ -147,7 +156,7 @@ void	ScalarConverter::printDouble()
     std::cout << std::fixed;
 	std::cout << std::setprecision(1);
 	std::cout << "double: ";
-    std::cout << this->doub << std::endl;
+    std::cout << doub << std::endl;
 }
 
 //Fixed: write floating-point values in fixed-point notation
