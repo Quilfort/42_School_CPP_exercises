@@ -1,26 +1,17 @@
-#include "Data.hpp"
-#include <iostream>
-#include <string>
-
-uintptr_t serialize(Data* pointer)
-{
-    uintptr_t convert = reinterpret_cast<uintptr_t>(pointer);
-    return (convert);
-}
-
-Data* deserialize(uintptr_t raw)
-{
-    Data *convert = reinterpret_cast<Data*>(raw);
-    return (convert);
-}
+#include "Serializer.hpp"
 
 int main(void)
 {
-    Data    		data;
-    Data    		*pointer = &data;
+    Data				data;
 
-    uintptr_t 		serial = serialize(pointer);
-    Data    		*deserial = deserialize(serial);
+	data.number = 42;
+	data.secret = "BOTW IS A OKE GAME";
+
+   	Data			*pointer = &data;
+
+    uintptr_t 		serial = Serializer::serialize(pointer);
+    Data    		*deserial = Serializer::deserialize(serial);
+
 	std::cout << "---------------------------------------------------" << std::endl;
     std::cout << "Before any cast" << std::endl;
     std::cout << "---------------------------------------------------" << std::endl;
@@ -43,11 +34,16 @@ int main(void)
 	std::cout << "---------------------------------------------------" << std::endl;
 	std::cout << "Original Data" << std::endl;
 	std::cout << "---------------------------------------------------" << std::endl;
-	data.printSecret();
-	pointer->printSecret();
+	std::cout << "Data of Number = " << data.number << std::endl;
+	std::cout << "Secret is  = " << data.secret << std::endl;
+	std::cout << "---------------------------------------------------" << std::endl;
+	std::cout << "Number is Pointer is = " << pointer->number << std::endl;
+	std::cout << "Secret of Pointer is  = " << pointer->secret << std::endl;
 	std::cout << "---------------------------------------------------" << std::endl;
 	std::cout << "Deserialized Data" << std::endl;
 	std::cout << "---------------------------------------------------" << std::endl;
-	deserial->printSecret();
+	std::cout << "Number is Deserial is = " << deserial->number << std::endl;
+	std::cout << "Secret of Deserial is  = " << deserial->secret << std::endl;
+	
 	return (EXIT_SUCCESS);
 }

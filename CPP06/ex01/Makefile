@@ -1,10 +1,10 @@
-NAME = serialization
+NAME = Serializer
 CC = c++
 FLAGS = -Wall -Wextra -Werror
 FLAGSPP = -std=c++98
 HEADER = -I ./include
 SRC =	./Src/main.cpp \
-		./Src/Data.cpp 
+		./Src/Serializer.cpp
 
 OBJ = $(SRC:%.cpp=%.o)
 
@@ -22,7 +22,7 @@ clean:
 
 
 fclean: clean
-	@echo "Delete ./serialization"
+	@echo "Delete ./Serializer"
 	@rm -f $(NAME)
 
 re: fclean all
