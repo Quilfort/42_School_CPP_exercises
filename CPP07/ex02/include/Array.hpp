@@ -24,7 +24,7 @@ class Array
         T       *array;
         size_t  len;
 
-        class IndexException : std::exception
+        class IndexOutOfBoundsException : public std::exception
 		{
 			public:
 				const char *what() const throw ()

@@ -32,7 +32,7 @@ Array<T>::Array(const Array &obj)
 template<typename T>
 Array<T>& Array<T>::operator=(const Array<T> &obj)
 {
-    std::cout << "Copy assignment operator is called" << std::endl;
+    //std::cout << "Copy assignment operator is called" << std::endl;
     if (array != NULL)
         delete[] array;
     len = obj.size();
@@ -53,7 +53,7 @@ template<typename T>
 T& Array<T>::operator[] (size_t i) const
 {
     if (i >= this->len)
-		throw(IndexException());
+		throw(IndexOutOfBoundsException());
     return(this->array[i]);
 }
 
