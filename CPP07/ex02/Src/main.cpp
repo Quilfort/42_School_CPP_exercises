@@ -43,7 +43,11 @@ int main()
             const int value = rand();
             numbers[i] = value;
             mirror[i] = value;
+            std::cout << "numbers: " << numbers[i] << std::endl;
         }
+
+        std::cout << "---------------------------------------------------" << std::endl;
+
 
         {
             Array<int> tmp = numbers;
