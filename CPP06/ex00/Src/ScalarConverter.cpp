@@ -112,9 +112,9 @@ void	ScalarConverter::castFloat()
 void	ScalarConverter::printChar()
 {
     std::cout << "char: ";
-    if (isprint(c) && (i <= INT_MAX && i >= INT_MIN))
+    if (isprint(c) && (i <= 0 && i >= 127))
         std::cout << c << std::endl;
-    else if (isascii(c) && (i <= INT_MAX && i >= INT_MIN))
+    else if (isascii(c) && (i <= 0 && i >= 127))
         std::cout << "Non displayable" << std::endl;
     else
 		std::cout << "impossible" << std::endl;
