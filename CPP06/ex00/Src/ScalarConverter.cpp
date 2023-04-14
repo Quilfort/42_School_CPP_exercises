@@ -52,7 +52,7 @@ int ScalarConverter::parseType()
 {
     char*	end;
     
-    if (input.length() == 1 && (input.find_first_not_of("-0123456789") != std::string::npos))
+    if (input.length() == 1 && (input.find_first_not_of("0123456789") != std::string::npos))
         return (CHAR);
     std::strtol(input.c_str(), &end, 10);
     if (*end == '\0')
@@ -94,7 +94,7 @@ void	ScalarConverter::castInt()
 
 void	ScalarConverter::castDouble()
 {   
-	doub = static_cast<float>(atof(input.c_str()));
+	doub = static_cast<double>(atof(input.c_str()));
     c = static_cast<char>(doub);
     i = static_cast<long int>(doub);
 	flo = static_cast<float>(doub);
@@ -114,9 +114,9 @@ void	ScalarConverter::castFloat()
 void	ScalarConverter::printChar()
 {
     std::cout << "char: ";
-    if (isprint(c) && (i <= 0 && i >= 127))
+    if (isprint(c) && (i <= 127 && i >= 0))
         std::cout << c << std::endl;
-    else if (isascii(c) && (i <= 0 && i >= 127))
+    else if (isascii(c) && (i <= 127 && i >= 0))
         std::cout << "Non displayable" << std::endl;
     else
 		std::cout << "impossible" << std::endl;
