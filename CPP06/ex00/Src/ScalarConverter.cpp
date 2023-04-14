@@ -32,7 +32,6 @@ ScalarConverter::~ScalarConverter()
 void ScalarConverter::convert(std::string string)
 {
     input = string;
-    
     InputType = parseType();
 
     if (InputType == CHAR)
@@ -43,7 +42,6 @@ void ScalarConverter::convert(std::string string)
         castDouble();
     else if (InputType == FLOAT)
         castFloat();
-
     if (InputType != ERROR)
         printConvert();
     else

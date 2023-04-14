@@ -3,10 +3,8 @@
 int main(void)
 {
     Data				data;
-
 	data.number = 42;
 	data.secret = "BOTW IS A OKE GAME";
-
    	Data			*pointer = &data;
 
     uintptr_t 		serial = Serializer::serialize(pointer);
@@ -44,6 +42,5 @@ int main(void)
 	std::cout << "---------------------------------------------------" << std::endl;
 	std::cout << "Number is Deserial is = " << deserial->number << std::endl;
 	std::cout << "Secret of Deserial is  = " << deserial->secret << std::endl;
-	
 	return (EXIT_SUCCESS);
 }
