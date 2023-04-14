@@ -102,7 +102,9 @@ void	ScalarConverter::castDouble()
 
 void	ScalarConverter::castFloat()
 {   
-	flo = static_cast<float>(atof(input.c_str()));
+	char*	end;
+    
+    flo = static_cast<float>(strtof(input.c_str(), &end));
     i = static_cast<long int>(flo);
     c = static_cast<char>(flo);
     doub = static_cast<double>(flo);
