@@ -70,7 +70,8 @@ void Array<T>::print(std::ostream& out) const
     if (len == 0)
         return;
     for (i = 0; i < len - 1; i++)
-		out << array[i] << " - ";
+		//out << array[i] << " ";
+        out << array[i] << " | ";
 	if (i == len - 1)
 		out << array[i];
 }
