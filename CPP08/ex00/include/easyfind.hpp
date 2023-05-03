@@ -7,15 +7,14 @@
 # include <list>
 
 template <typename T>
-int easyfind(T var, int second)
+bool easyfind(T var, int search)
 {
     typename T::iterator iter;
-    for (iter = var.begin(); iter != var.end(); ++iter)
-    {
-        std::cout << *iter << " ";
-    }
-    std::cout << std::endl;
-    return (second);
+    iter = std::find(var.begin(), var.end(), search);
+    if (iter != var.end())
+        return (true);
+    else
+        return (false);
 }
 
 #endif
