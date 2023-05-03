@@ -65,7 +65,7 @@ int main()
 
         try
         {
-            numbers[2] = 0;
+            numbers[-2] = 0;
         }
         catch(const std::exception& e)
         {

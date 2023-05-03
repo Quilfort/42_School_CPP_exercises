@@ -20,18 +20,15 @@ class Array
         T&	    operator[] (size_t i) const;
         void    print(std::ostream& out) const;
 
+        class IndexOutOfBounds : public std::exception
+	    {
+            public:
+                const char *what() const throw ();
+	    };
+
     private:
         T       *array;
         size_t  len;
-
-        class IndexOutOfBoundsException : public std::exception
-		{
-			public:
-				const char *what() const throw ()
-                {
-                    return ("INDEX ERROR");
-                }
-		};
 };
 
 template<typename T>
