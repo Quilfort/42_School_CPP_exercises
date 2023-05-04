@@ -67,6 +67,7 @@
         "__memory": "cpp",
         "filesystem": "cpp",
         "__functional_03": "cpp",
-        "*.tpp": "cpp"
+        "*.tpp": "cpp",
+        "list": "cpp"
     }
 }
