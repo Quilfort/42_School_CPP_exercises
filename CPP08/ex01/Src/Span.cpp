@@ -40,16 +40,7 @@ void Span::addAmount(int amount)
 {
 	std::srand((unsigned) std::time(NULL));
 	for (int i = 0; i < amount; i++)
-	{
-		if (_size == _maxint)
-			throw Span::AddNumberError();
-		else
-		{
-			int add = std::rand();
-			_numbers.push_back(add);
-			_size = _numbers.size();
-		}
-	}
+		addNumber(std::rand());
 }
 
 int Span::shortestSpan(void)

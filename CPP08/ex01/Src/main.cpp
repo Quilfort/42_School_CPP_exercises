@@ -44,13 +44,12 @@ int main(void)
     Span sp2 = Span(50);
     try
     {
-        sp2.addAmount(100000);
+        sp2.addAmount(1000);
     }
     catch(Span::AddNumberError& e)
     {
         std::cerr << e.what() << '\n';
     }
-    
     std::cout << "Shortest: " << sp2.shortestSpan() << std::endl;
     std::cout << "Longest: " << sp2.longestSpan() << std::endl;
     return (0);
