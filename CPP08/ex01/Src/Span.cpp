@@ -27,40 +27,63 @@ Span::~Span()
 
 void Span::addNumber(int add)
 {	
-	if (_size < _maxint)
+	if (_size == _maxint)
+		throw Span::AddNumberError();
+	else
 	{
 		_numbers.push_back(add);
 		_size = _numbers.size();
 	}
-	else
-		std::cout << "ERROR" << std::endl;
+}
+
+void Span::addAmount(int amount)
+{
+	std::srand((unsigned) std::time(NULL));
+	for (int i = 0; i < amount; i++)
+	{
+		if (_size == _maxint)
+			throw Span::AddNumberError();
+		else
+		{
+			int add = std::rand();
+			_numbers.push_back(add);
+			_size = _numbers.size();
+		}
+	}
 }
 
 int Span::shortestSpan(void)
 {
+	if (_size < 2)
+		throw Span::VectorLengthError();
 	std::vector<int> temp;
 	temp = _numbers;
 	std::sort(temp.begin(), temp.end());
-
-	std::cout << "Number: " << _numbers[0] << std::endl;
-	std::cout << "Temp: " << temp[0] << std::endl;
-
-
-	return (7);
+	int answer = INT_MAX;
+	std::vector<int>::iterator iter;
+	for (iter = temp.begin(); iter < temp.end() - 1; iter++)
+	{
+		if (*(iter + 1) - *iter < answer)
+			answer = *(iter + 1) - *iter;
+	}
+	return (answer);
 }
 
 int Span::longestSpan(void)
 {
-	int answer;
-	answer = 0;
-	if (_size > 2)
-	{
-		int small = *std::min_element(_numbers.begin(), _numbers.end());
-		int big = *std::max_element(_numbers.begin(), _numbers.end());
-		answer = big - small;
-	}
-	else
-		std::cout << "SPAN TOO SMALL" << std::endl;
-
-	return (answer);	
+	if (_size < 2)
+		throw Span::VectorLengthError();
+	int small = *std::min_element(_numbers.begin(), _numbers.end());
+	int big = *std::max_element(_numbers.begin(), _numbers.end());
+	return (big - small);	
 }
+
+const char *Span::AddNumberError::what(void) const throw()
+{
+	return ("Maximum Integers exceeded");
+};
+
+const char *Span::VectorLengthError::what(void) const throw()
+{
+	return ("Vector has less than 2 number");
+};
