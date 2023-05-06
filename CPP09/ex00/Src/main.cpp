@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     if (argc != 2)
     {
         std::cout << "Error: could not open file." << std::endl;
-        return 1;
+        return (EXIT_FAILURE);
     }
     //Check if file is available
     std::string infileName = argv[1];
@@ -18,8 +18,16 @@ int main(int argc, char *argv[])
         std::cout << "Input file does not exist" << std::endl;
         return (EXIT_FAILURE);
     }
-
-
-    return 0;
+    std::string	line;
+    if (!infile.eof())
+    {
+        getline(infile, line);
+        std::cout << line << std::endl;
+        if (line != "date | value")
+            std::cout << "First line incorrect | should be date | value" << std::endl;
+    }
+    // Close files
+	infile.close();
+    return (EXIT_SUCCESS);
 
 }
