@@ -24,6 +24,9 @@ int main()
 
         std::cout << "First: " << first << std::endl;
         std::cout << "Second: " << second << std::endl;
+        second[2] = 'a';
+        std::cout << "---------" << std::endl;
+        std::cout << "Second: " << second << std::endl;
     }
     std::cout << "---------------------------------------------------" << std::endl;
 
@@ -65,7 +68,7 @@ int main()
 
         try
         {
-            numbers[-2] = 0;
+            numbers[1] = 0;
         }
         catch(const std::exception& e)
         {
