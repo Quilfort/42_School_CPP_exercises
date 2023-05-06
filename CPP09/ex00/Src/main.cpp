@@ -21,7 +21,6 @@ bool checkInput(std::ifstream *infile, std::string infileName)
         }
     }
     return (true);
-
 }
 
 int main(int argc, char *argv[])
@@ -38,16 +37,26 @@ int main(int argc, char *argv[])
         infile.close();
         return (EXIT_FAILURE);
     }
+ 
+    //Check CSV file and put in map
+    BitcoinExchange btc;
+    try
+    {
+        btc.getData();
+    }
+    catch(const BitcoinExchange::FileNotValidException& e)
+    {
+        infile.close();
+        std::cerr << e.what() << '\n';
+        return (EXIT_FAILURE);
+    }
+    // Check lines
     std::string	line;
-    while (!infile.eof())
+    if (!infile.eof())
     {
         getline(infile, line);
-        std::cout << line << std::endl; 
+        btc.checkBitcoin(line);
     }
-
-    BitcoinExchange btc;
-    btc.getData();
-
 
     // Close files
 	infile.close();

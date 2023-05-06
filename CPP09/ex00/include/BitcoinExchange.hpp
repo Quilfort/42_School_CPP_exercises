@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <algorithm>
+# include <string>
 # include <fstream>
 # include <sstream>
 # include <map>
@@ -17,13 +18,22 @@ class BitcoinExchange
         ~BitcoinExchange();
 
         void getData();
+        void checkBitcoin(std::string input);
+        bool checkInput(std::string input);
+
+
+
+        class FileNotValidException : std::exception
+		{
+			public:
+				const char *what() const throw ();
+		};
 
     private:
         std::map<std::string, float>    _data;
-
-
-
-
+        std::string _inputDate;
+        std::string _bitcoinCount;
+        
 };
 
 
