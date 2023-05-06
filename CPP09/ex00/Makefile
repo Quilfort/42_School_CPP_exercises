@@ -4,7 +4,7 @@ FLAGS = -Wall -Wextra -Werror
 FLAGSPP = -std=c++98
 HEADER = -I ./include
 SRC =	./Src/main.cpp \
-		#./Src/BitcoinExchange.cpp
+		./Src/BitcoinExchange.cpp
 
 OBJ = $(SRC:%.cpp=%.o)
 

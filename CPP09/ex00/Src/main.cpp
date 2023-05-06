@@ -2,6 +2,28 @@
 
 //https://cdn.intra.42.fr/pdf/pdf/83098/en.subject.pdf
 
+bool checkInput(std::ifstream *infile, std::string infileName)
+{
+    infile->open(infileName);
+    if (!infile)
+	{
+        std::cout << "Input file does not exist" << std::endl;
+        return (false);
+    }
+    std::string	line;
+    if (!infile->eof())
+    {
+        getline(*infile, line);
+        if (line != "date | value")
+        {
+            std::cout << "First line incorrect | should be date | value" << std::endl;
+            return (false);
+        }
+    }
+    return (true);
+
+}
+
 int main(int argc, char *argv[])
 {
     if (argc != 2)
@@ -10,22 +32,23 @@ int main(int argc, char *argv[])
         return (EXIT_FAILURE);
     }
     //Check if file is available
-    std::string infileName = argv[1];
 	std::ifstream	infile;
-    infile.open(infileName);
-    if (!infile)
-	{
-        std::cout << "Input file does not exist" << std::endl;
+    if (checkInput(&infile, argv[1]) == false)
+    {
+        infile.close();
         return (EXIT_FAILURE);
     }
     std::string	line;
-    if (!infile.eof())
+    while (!infile.eof())
     {
         getline(infile, line);
-        std::cout << line << std::endl;
-        if (line != "date | value")
-            std::cout << "First line incorrect | should be date | value" << std::endl;
+        std::cout << line << std::endl; 
     }
+
+    BitcoinExchange btc;
+    btc.getData();
+
+
     // Close files
 	infile.close();
     return (EXIT_SUCCESS);
