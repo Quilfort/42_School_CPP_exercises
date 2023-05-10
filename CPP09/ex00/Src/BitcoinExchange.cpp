@@ -3,19 +3,24 @@
 BitcoinExchange::BitcoinExchange()
 {
     //std::cout << "Default constructor called" << std::endl;
-    
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &old_obj)
 {
     //std::cout << "Copy constructor called" << std::endl;
-    *this = old_obj;    
+    _data = old_obj._data;
+    _inputDate = old_obj._inputDate;
+    _bitcoinCount = old_obj._bitcoinCount;
+    _value = old_obj._value;
 }
 
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &old_obj)
 {
     //std::cout << "Copy assignment operator called" << std::endl;
-    (void)old_obj;
+    _data = old_obj._data;
+    _inputDate = old_obj._inputDate;
+    _bitcoinCount = old_obj._bitcoinCount;
+    _value = old_obj._value;
     return (*this);
 }
 
@@ -53,19 +58,34 @@ void BitcoinExchange::checkBitcoin(std::string input)
 {
 	if (checkInput(input) == true)
 	{
-		std::map<std::string, float>::iterator iter = _data.begin();
-    	std::cout << "Key: " << iter->first << ", Value: " << iter->second << std::endl;
+        std::map<std::string, float>::iterator iter;
+        for (iter = _data.begin(); iter != _data.end(); iter++)
+        {
+            if (_inputDate == iter->first)
+                break; 
+            if (_inputDate < iter->first)
+            {
+                iter--;
+                break; 
+            }
+        }
+        float price;
+        float btc;
+        std::stringstream stream;
+        stream << iter->second;
+        stream >> price;
+        btc = price * _value;
+        std::cout << _inputDate << " => ";
+        std::cout << _value << " = ";
+        std::cout << btc << std::endl;
 	}
 }
 
 bool BitcoinExchange::checkInput(std::string input)
 {
-	std::cout << "Input: " <<  input << std::endl;
 	std::string delimiter = " | ";
 	_inputDate = input.substr(0, input.find(delimiter));
 	_bitcoinCount = input.substr(input.find(delimiter) + 3, input.length());
-	std::cout << "Date: " <<  _inputDate << std::endl;
-	std::cout << "Amount: " <<  _bitcoinCount << std::endl;
     if (checkInputDate() == false || checkInputAmount() == false )
         return (false);
 	return (true);
@@ -93,28 +113,35 @@ bool BitcoinExchange::checkInputDate()
 
 bool BitcoinExchange::checkInputAmount()
 {
-    if (_bitcoinCount[0] == '-')
+    int pointCount = 0;
+    if (_bitcoinCount[0] == '-' || _bitcoinCount.size() == 0)
     {
         std::cout << "Error: not a positive number" << std::endl;
         return (false);
     }
     for (size_t i = 0; i < _bitcoinCount.size(); i++)
     {
-        if (i == 4)
-        {
-            std::cout << "Error: too large a number." << std::endl;
-            return (false);   
-        }
         if (!isdigit(_bitcoinCount[i]))
         {
-            std::cout << "Error: value is not a number" << std::endl;
-            return (false);            
+            if (_bitcoinCount[i] == '.')
+            {
+                pointCount++;
+                if (pointCount > 1)
+                {
+                    std::cout << "Error: bad input => " << _bitcoinCount << std::endl;
+                    return (false);  
+                }
+            }
+            else
+            {
+                std::cout << "Error: value is not a number" << std::endl;
+                return (false);  
+            }
         }
     }
     std::stringstream stream;
     stream << _bitcoinCount;
     stream >> _value;
-    std::cout << "Value: " << _value << std::endl;
     if (_value > 1000)
     {
         std::cout << "Error: too large a number." << std::endl;

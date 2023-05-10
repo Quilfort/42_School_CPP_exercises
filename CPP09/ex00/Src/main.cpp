@@ -52,14 +52,12 @@ int main(int argc, char *argv[])
     }
     // Check lines
     std::string	line;
-    if (!infile.eof())
+    while (!infile.eof())
     {
         getline(infile, line);
         btc.checkBitcoin(line);
     }
-
     // Close files
 	infile.close();
     return (EXIT_SUCCESS);
-
 }

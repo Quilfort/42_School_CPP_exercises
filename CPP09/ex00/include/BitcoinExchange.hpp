@@ -33,10 +33,9 @@ class BitcoinExchange
 
     private:
         std::map<std::string, float>    _data;
-        std::string _inputDate;
-        std::string _bitcoinCount;
-        float         _value;
-        
+        std::string						_inputDate;
+        std::string 					_bitcoinCount;
+        float        	 				_value; 
 };
 
 
