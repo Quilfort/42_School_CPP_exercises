@@ -8,40 +8,26 @@ int main(int argc, char *argv[])
         std::cout << "Use 1 argument" << std::endl;
         return EXIT_FAILURE;
     }
-    
-    RPN program(argv[1]);
+    int a,b;
+    RPN prog(argv[1]);
     std::stack<int> stack;
-    std::cout << program._input << std::endl;
-    std::stringstream stream(program._input);
-    //std::string var;
-    int num;
-    stream >> num;
-    stack.push(num);
-    stream >> num;
-    stack.push(num);
-    while (!stack.empty())
+    std::string::iterator iter;
+    for (iter = prog._input.begin(); iter != prog._input.end(); iter++)
     {
-        std::cout << stack.top() << " ";
-        stack.pop();
+        if (prog.isOperater(*iter))
+        {
+            a = stack.top();
+            stack.pop();
+            b = stack.top();
+            stack.pop();
+            stack.push(prog.calculation(a, b, *iter));
+        }
+        else if (prog.isNumber(*iter))
+        {
+            stack.push(prog.convertNum((*iter)));        
+        }
     }
-    std::cout << std::endl;
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    std::cout << stack.top() << std::endl;
     return EXIT_SUCCESS;
 }
 
