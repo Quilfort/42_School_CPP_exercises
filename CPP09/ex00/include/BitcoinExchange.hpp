@@ -8,6 +8,8 @@
 # include <sstream>
 # include <map>
 # include <limits.h>
+# include <ctime>
+
 
 class BitcoinExchange
 {

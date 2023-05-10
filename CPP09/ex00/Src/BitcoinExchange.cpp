@@ -66,25 +66,28 @@ bool BitcoinExchange::checkInput(std::string input)
 	_bitcoinCount = input.substr(input.find(delimiter) + 3, input.length());
 	std::cout << "Date: " <<  _inputDate << std::endl;
 	std::cout << "Amount: " <<  _bitcoinCount << std::endl;
-
-
-    if (checkInputAmount() == false)
+    if (checkInputDate() == false || checkInputAmount() == false )
         return (false);
-    
-
-
-
-
-
-
-
-
 	return (true);
 }
 
 bool BitcoinExchange::checkInputDate()
 {
-
+    struct tm tm;
+    if (!strptime(_inputDate.c_str(), "%F", &tm) || _inputDate.size() > 10) 
+    {
+        std::cout << "Error: bad input => " << _inputDate << std::endl;
+        return (false); 
+    }
+    std::stringstream stream;
+    int year;
+    stream << _inputDate.substr(0, _inputDate.find("-"));
+    stream >> year;
+    if (year < 2009)
+    {
+        std::cout << "Error: bad input => " << _inputDate << std::endl;
+        return (false);
+    }
     return (true);
 }
 
@@ -111,7 +114,6 @@ bool BitcoinExchange::checkInputAmount()
     std::stringstream stream;
     stream << _bitcoinCount;
     stream >> _value;
-
     std::cout << "Value: " << _value << std::endl;
     if (_value > 1000)
     {
