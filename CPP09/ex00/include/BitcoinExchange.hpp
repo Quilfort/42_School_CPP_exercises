@@ -20,8 +20,8 @@ class BitcoinExchange
         void getData();
         void checkBitcoin(std::string input);
         bool checkInput(std::string input);
-
-
+        bool checkInputDate();
+        bool checkInputAmount();
 
         class FileNotValidException : std::exception
 		{
@@ -33,6 +33,7 @@ class BitcoinExchange
         std::map<std::string, float>    _data;
         std::string _inputDate;
         std::string _bitcoinCount;
+        float         _value;
         
 };
 
