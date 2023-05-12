@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     }
     std::vector<int> vec;
     std::deque<int> deq;
-    for (size_t i = 1; argv[i] != '\0'; i++)
+    for (size_t i = 1; argv[i] != NULL; i++)
     {
         temp = atol(argv[i]);
         if (temp > INT_MAX)
@@ -32,19 +32,9 @@ int main(int argc, char *argv[])
         }
         vec.push_back(temp);
         deq.push_back(temp);
-    }
-
-
-
-
-
-
-
-    //char **before = argv;
-    //std::cout << "Before:\t ";
-    //for (size_t i = 1; before[i] != '\0'; i++)
-    //    std::cout << before[i] << " ";
-    //std::cout << std::endl;
+	}
+    merge.sortVector(vec);
+    merge.sortDeque(deq);
 
     return EXIT_SUCCESS;
 
