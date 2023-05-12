@@ -36,5 +36,10 @@ bool PmergeMe::checkInput(char *argv[])
     }
     if (_input[i][0] == '-')
             return (false);
+
+    // IS DIGIT             
+
+
+
     return true;
 }
