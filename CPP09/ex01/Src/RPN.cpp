@@ -5,13 +5,11 @@ RPN::RPN(std::string input)
     _input = input;
 }
 
-RPN::RPN(const RPN &old_obj)
-{
-    *this = old_obj;
-}
+RPN::RPN(const RPN &old_obj) : _input(old_obj._input) {}
+
 RPN& RPN::operator=(const RPN &old_obj)
 {
-    (void)old_obj;
+    _input = old_obj._input;
     return (*this);
 }
 
@@ -39,6 +37,7 @@ int RPN::convertNum(char check)
     return value;
 }
 
+//Negative number not possible
 int RPN::calculation(int a, int b, char op)
 {
     if(op == '+')
@@ -51,6 +50,4 @@ int RPN::calculation(int a, int b, char op)
         return b / a;
     else
         return INT_MIN;
-
-    // Andere check voor vinden    
 }
