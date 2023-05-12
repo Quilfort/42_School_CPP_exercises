@@ -24,23 +24,6 @@ class RPN
         std::string _input;
 
     private:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 };
 
 #endif

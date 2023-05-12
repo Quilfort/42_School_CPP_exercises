@@ -1,10 +1,10 @@
-NAME = btc
+NAME = PmergeMe
 CC = c++
 FLAGS = -Wall -Wextra -Werror
 FLAGSPP = -std=c++98
 HEADER = -I ./include
 SRC =	./Src/main.cpp \
-		./Src/BitcoinExchange.cpp
+		./Src/PmergeMe.cpp
 
 OBJ = $(SRC:%.cpp=%.o)
 
@@ -22,7 +22,7 @@ clean:
 
 
 fclean: clean
-	@echo "Delete ./btc"
+	@echo "Delete ./PmergeMe"
 	@rm -f $(NAME)
 
 re: fclean all

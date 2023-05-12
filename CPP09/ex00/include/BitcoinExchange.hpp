@@ -10,7 +10,6 @@
 # include <limits.h>
 # include <ctime>
 
-
 class BitcoinExchange
 {
     public:
@@ -37,8 +36,4 @@ class BitcoinExchange
         std::string 					_bitcoinCount;
         float        	 				_value; 
 };
-
-
-
-
 #endif
