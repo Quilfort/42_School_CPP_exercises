@@ -5,7 +5,9 @@
 # include <algorithm>
 # include <vector>
 # include <deque>
-# include <limits.h> 
+# include <limits.h>
+# include <ctime> 
+# include <sys/time.h>
 
 class PmergeMe
 {
@@ -30,6 +32,10 @@ class PmergeMe
 
         // Print Answer
         void printAnswer(std::vector<int> &vec, std::deque<int> &deq);
+        void printTime(int elements, std::string cont, long time);
+
+        long    _vec_time;
+        long    _deq_time;
         
     private:
         char    **_input;

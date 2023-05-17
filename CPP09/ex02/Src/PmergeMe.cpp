@@ -2,7 +2,8 @@
 
 PmergeMe::PmergeMe()
 {
-
+	_vec_time = 0;
+	_deq_time = 0;
 }
 
 PmergeMe::PmergeMe(const PmergeMe &old_obj)
@@ -23,7 +24,6 @@ bool PmergeMe::checkInput(char *argv[])
 	_input = argv;
     size_t i;
     size_t j;
-    //IS DIGIT EN NEGATIVE
     for (i = 1; _input[i] != NULL; i++)
     {
         for (j = 0; _input[i][j] != '\0'; j++)
@@ -32,7 +32,6 @@ bool PmergeMe::checkInput(char *argv[])
                 return false;
         }
     }
-    // IS DUPLICATE
     for (i = 1; _input[i + 1] != NULL; i++)
     {
         for (j = i + 1; _input[j] != '\0'; j++)
@@ -44,24 +43,58 @@ bool PmergeMe::checkInput(char *argv[])
     return true;
 }
 
+void PmergeMe::printTime(int elements, std::string cont, long time)
+{
+	std::cout << "Time to process a range of ";
+	std::cout << elements;
+	std::cout << " elements with std::";
+	std::cout << cont << " : \t";
+	std::cout << time << " us" << std::endl;
+}
+
 void PmergeMe::printAnswer(std::vector<int> &vec, std::deque<int> &deq)
 {
 	std::vector<int>::iterator iter;
 	std::deque<int>::iterator iterDeq;
-	std::cout << "Before: ";
-	for (int i = 1; _input[i] != NULL; i++)
-		std::cout << _input[i] << " ";
-	std::cout << std::endl << "Vector After: ";
-	for (iter = vec.begin(); iter != vec.end(); iter++)
-		std::cout << *iter << " ";
-	std::cout << std::endl << "Deque After: ";
-	for (iterDeq = deq.begin(); iterDeq != deq.end(); iterDeq++)
-		std::cout << *iterDeq << " ";
-	std::cout << std::endl;
+	std::cout << "Before:\t\t ";
+	if (vec.size() < 6)
+	{
+		for (int i = 1; _input[i] != NULL; i++)
+			std::cout << _input[i] << " ";
+		std::cout << std::endl << "Vector After:\t ";
+		for (iter = vec.begin(); iter != vec.end(); iter++)
+			std::cout << *iter << " ";
+		std::cout << std::endl << "Deque After:\t ";
+		for (iterDeq = deq.begin(); iterDeq != deq.end(); iterDeq++)
+			std::cout << *iterDeq << " ";
+		std::cout << std::endl;
+	}
+	else
+	{
+		int count;
+		for (count = 1; count < 5; count++)
+			std::cout << _input[count] << " ";
+		std::cout << "[...]";
+		count = 0;
+		std::cout << std::endl << "Vector After:\t ";
+		for (iter = vec.begin(); count < 4; iter++, count++)
+			std::cout << *iter << " ";
+		std::cout << "[...]";
+		count = 0;
+		std::cout << std::endl << "Deque After:\t ";
+		for (iterDeq = deq.begin(); count < 4; iterDeq++, count++)
+			std::cout << *iterDeq << " ";
+		std::cout << "[...]";
+		std::cout << std::endl;
+	}
+	printTime(vec.size(), "vector", _vec_time);
+	printTime(deq.size(), "deque", _deq_time);
 }
 
 void PmergeMe::sortVector(std::vector<int> &vec, int start, int end)
 {
+	timeval vec_start, vec_end;
+    gettimeofday(&vec_start, NULL);
 	if (end - start > 5)
 	{
 		int divide = (start + end) / 2;
@@ -71,7 +104,8 @@ void PmergeMe::sortVector(std::vector<int> &vec, int start, int end)
 	}
 	else
 		insertVector(vec, start, end);
-
+	gettimeofday(&vec_end, NULL);
+	_vec_time = vec_end.tv_usec - vec_start.tv_usec;
 }
 
 void PmergeMe::insertVector(std::vector<int> &vec, int start, int end)
@@ -126,6 +160,8 @@ void PmergeMe::combineVector(std::vector<int> &vec, int start, int end, int divi
 
 void PmergeMe::sortDeque(std::deque<int> &deq, int start, int end)
 {
+	timeval deq_start, deq_end;
+	gettimeofday(&deq_start, NULL);
 	if (end - start > 5)
 	{
 		int divide = (start + end) / 2;
@@ -135,6 +171,8 @@ void PmergeMe::sortDeque(std::deque<int> &deq, int start, int end)
 	}
 	else
 		insertDeque(deq, start, end);	
+	gettimeofday(&deq_end, NULL);
+	_deq_time = deq_end.tv_usec - deq_start.tv_usec;
 }
 
 void PmergeMe::insertDeque(std::deque<int> &deq, int start, int end)
