@@ -7,16 +7,16 @@ Span::Span(unsigned int N)
 	_size = 0;
 }
 
-Span::Span(const Span &old_obj)
+Span::Span(const Span &old_obj) : _maxint(old_obj._maxint) , _size(old_obj._size)
 {
     //std::cout << "Copy constructor called" << std::endl;
-    *this = old_obj;
 }
 
 Span& Span::operator=(const Span &old_obj)
 {
     //std::cout << "Copy assignment operator called" << std::endl;
     this->_maxint = old_obj._maxint;
+	this->_size = old_obj._maxint;
     return (*this);
 }
 

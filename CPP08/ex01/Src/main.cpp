@@ -41,10 +41,10 @@ int main(void)
         std::cerr << e.what() << '\n';
     }
     std::cout << "---------------------------------------------------" << std::endl;
-    Span sp2 = Span(50);
+    Span sp2 = Span(10000);
     try
     {
-        sp2.addAmount(1000);
+        sp2.addAmount(10001);
     }
     catch(Span::AddNumberError& e)
     {

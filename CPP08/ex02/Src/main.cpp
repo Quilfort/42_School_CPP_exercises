@@ -21,8 +21,6 @@ int main()
 
     MutantStack<int>::iterator iter = mstack.begin();
     MutantStack<int>::iterator end = mstack.end();
-    //++iter;
-    //--iter;
     while (iter != end)
     {
         std::cout << *iter << std::endl;
@@ -38,5 +36,30 @@ int main()
         std::cout << *rev_iter << std::endl;
         ++rev_iter;
     }
+    std::cout << "---------------------------------------------------" << std::endl;
+    std::cout << "-------- Now with a list -------" << std::endl;   
+    std::cout << "---------------------------------------------------" << std::endl;
+    std::list<int>  testlist;
+    testlist.push_back(4);
+    testlist.push_back(17);
+    std::cout << testlist.back() << std::endl;
+    std::cout << "---------------------------------------------------" << std::endl;
+    testlist.pop_back();
+    std::cout << testlist.size() << std::endl;
+    std::cout << "---------------------------------------------------" << std::endl;
+    testlist.push_back(8);
+    testlist.push_back(3);
+    testlist.push_back(737);
+    testlist.push_back(19);
+    std::cout << testlist.size() << std::endl;
+    std::cout << "---------------------------------------------------" << std::endl;
+    std::list<int>::iterator listiter = testlist.begin();
+    std::list<int>::iterator listend = testlist.end();
+    while (listiter != listend)
+    {
+        std::cout << *listiter << std::endl;
+        ++listiter;
+    }
+    std::cout << "---------------------------------------------------" << std::endl;
     return 0;
 }
