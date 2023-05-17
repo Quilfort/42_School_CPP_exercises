@@ -16,7 +16,7 @@ Span& Span::operator=(const Span &old_obj)
 {
     //std::cout << "Copy assignment operator called" << std::endl;
     this->_maxint = old_obj._maxint;
-	this->_size = old_obj._maxint;
+	this->_size = old_obj._size;
     return (*this);
 }
 

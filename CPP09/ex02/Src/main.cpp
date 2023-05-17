@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
         vec.push_back(temp);
         deq.push_back(temp);
 	}
-    merge.sortVector(vec);
+    merge.sortVector(vec, 0, vec.size() - 1);
     merge.sortDeque(deq);
 
     return EXIT_SUCCESS;

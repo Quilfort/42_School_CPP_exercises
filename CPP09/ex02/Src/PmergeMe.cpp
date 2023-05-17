@@ -44,7 +44,7 @@ bool PmergeMe::checkInput(char *argv[])
     return true;
 }
 
-void PmergeMe::sortVector(std::vector<int> vec)
+void PmergeMe::sortVector(std::vector<int> vec, int start, int end)
 {
     std::vector<int> tempo;
 	tempo = vec;

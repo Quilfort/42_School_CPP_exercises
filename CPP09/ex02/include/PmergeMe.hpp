@@ -16,7 +16,7 @@ class PmergeMe
         ~PmergeMe();
 
         bool checkInput(char *argv[]);
-        void sortVector(std::vector<int> vec);
+        void sortVector(std::vector<int> vec, int start, int end);
         void sortDeque(std::deque<int> deq);
         
         char        **_input;
