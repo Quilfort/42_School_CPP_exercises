@@ -1,9 +1,6 @@
 #include "RPN.hpp"
 
-RPN::RPN(std::string input)
-{
-    _input = input;
-}
+RPN::RPN(std::string input) : _input(input) {}
 
 RPN::RPN(const RPN &old_obj) : _input(old_obj._input) {}
 
@@ -37,17 +34,14 @@ int RPN::convertNum(char check)
     return value;
 }
 
-//Negative number not possible
 int RPN::calculation(int a, int b, char op)
 {
-    if(op == '+')
+    if (op == '+')
         return b + a;
-    else if(op == '-')
+    else if (op == '-')
         return b - a;
-    else if(op == '*')
+    else if (op == '*')
         return b * a;
-    else if(op == '/')
-        return b / a;
     else
-        return INT_MIN;
+        return b / a;
 }
