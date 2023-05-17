@@ -42,6 +42,11 @@ int main(int argc, char *argv[])
         else if (prog.isNumber(*iter))
             stack.push(prog.convertNum((*iter)));     
     }
+    if (stack.size() != 1)
+    {
+        std::cout << "Stack Size Wrong" << std::endl;
+        return EXIT_FAILURE;
+    }
     std::cout << stack.top() << std::endl;
     return EXIT_SUCCESS;
 }

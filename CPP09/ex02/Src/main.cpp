@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
     if (merge.checkInput(argv) == false)
     {
-        std::cout << "INPUT False" << std::endl;
+        std::cout << "input false False" << std::endl;
         return EXIT_FAILURE;
     }
     std::vector<int> vec;
