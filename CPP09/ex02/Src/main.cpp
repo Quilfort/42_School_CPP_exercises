@@ -34,11 +34,8 @@ int main(int argc, char *argv[])
         deq.push_back(temp);
 	}
     merge.sortVector(vec, 0, vec.size() - 1);
-    merge.sortDeque(deq);
+    merge.sortDeque(deq, 0, deq.size() - 1);
+    merge.printAnswer(vec, deq);
 
     return EXIT_SUCCESS;
-
-
-
-
 }
