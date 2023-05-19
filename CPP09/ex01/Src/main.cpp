@@ -9,7 +9,7 @@ int error_message(std::string string)
 int main(int argc, char *argv[])
 {
     if (argc != 2)
-        error_message("Error: Too many arguments");
+        error_message("Error: Wrong amount arguments");
     int a,b;
     RPN prog(argv[1]);
     std::stack<int> stack;

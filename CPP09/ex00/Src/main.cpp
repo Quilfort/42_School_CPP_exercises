@@ -3,7 +3,7 @@
 bool checkInput(std::ifstream *infile, std::string infileName)
 {
     infile->open(infileName);
-    if (!infile)
+    if (!*infile)
 	{
         std::cout << "Input file does not exist" << std::endl;
         return (false);
