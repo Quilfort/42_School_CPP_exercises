@@ -8,12 +8,16 @@ PmergeMe::PmergeMe()
 
 PmergeMe::PmergeMe(const PmergeMe &old_obj)
 {
-    *this = old_obj;
+    _input = old_obj._input;
+	_vec_time = old_obj._vec_time;
+	_deq_time = old_obj._deq_time;
 }
 
 PmergeMe& PmergeMe::operator=(const PmergeMe &old_obj)
 {
-    (void)old_obj;
+    _input = old_obj._input;
+	_vec_time = old_obj._vec_time;
+	_deq_time = old_obj._deq_time;
     return (*this);
 }
 

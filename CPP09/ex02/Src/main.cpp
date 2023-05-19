@@ -1,20 +1,19 @@
 #include "PmergeMe.hpp"
 
-// https://cdn.intra.42.fr/pdf/pdf/83098/en.subject.pdf
+int error_message(std::string string)
+{
+    std::cout << string << std::endl;
+    exit(EXIT_FAILURE);
+}
+
 int main(int argc, char *argv[])
 {
     if (argc == 1 || argc > 3001)
-    {
-        std::cout << "Give right amount of arguments" << std::endl;
-        return EXIT_FAILURE;
-    }
+        error_message("Give right amount of arguments");
     PmergeMe merge;
     unsigned long temp = 0;
     if (merge.checkInput(argv) == false)
-    {
-        std::cout << "input false False" << std::endl;
-        return EXIT_FAILURE;
-    }
+        error_message("Input is incorrect");
     long time_diff;
     timeval start, end;
     gettimeofday(&start, NULL);
@@ -24,10 +23,7 @@ int main(int argc, char *argv[])
     {
         temp = atol(argv[i]);
         if (temp > INT_MAX)
-        {
-            std::cout << "Int is bigger than max int" << std::endl;
-            return EXIT_FAILURE;
-        }
+            error_message("Int is bigger than max int");
         vec.push_back(temp);
         deq.push_back(temp);
 	}
