@@ -1,13 +1,13 @@
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
 
-# include <iostream>
 # include <algorithm>
 # include <vector>
 # include <deque>
 # include <limits.h>
 # include <ctime> 
 # include <sys/time.h>
+# include <iostream>
 
 class PmergeMe
 {

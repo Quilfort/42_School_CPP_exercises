@@ -41,7 +41,10 @@ bool PmergeMe::checkInput(char *argv[])
         for (j = i + 1; _input[j] != '\0'; j++)
         {
             if (strcmp(_input[i], _input[j]) == 0)
-                return (false);
+			{
+            	std::cout << "Duplicate in string" << std::endl;
+				return (false);
+			}
         }
     }
     return true;
