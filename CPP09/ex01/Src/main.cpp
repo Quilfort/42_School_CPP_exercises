@@ -29,6 +29,8 @@ int main(int argc, char *argv[])
             b = stack.top();
             stack.pop();
             int push = prog.calculation(a, b, *iter);
+            if (push == INT_MAX)
+                error_message("Can not divide by zero");
             stack.push(push);
         }
         else if (prog.isNumber(*iter))

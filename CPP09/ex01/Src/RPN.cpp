@@ -43,5 +43,9 @@ int RPN::calculation(int a, int b, char op)
     else if (op == '*')
         return b * a;
     else
+    {
+        if (a == 0 || b == 0)
+            return INT_MAX;
         return b / a;
+    }
 }

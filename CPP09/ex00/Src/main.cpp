@@ -1,5 +1,11 @@
 #include "BitcoinExchange.hpp"
 
+int error_message(std::string string)
+{
+    std::cout << string << std::endl;
+    exit(EXIT_FAILURE);
+}
+
 bool checkInput(std::ifstream *infile, std::string infileName)
 {
     infile->open(infileName);
@@ -24,10 +30,7 @@ bool checkInput(std::ifstream *infile, std::string infileName)
 int main(int argc, char *argv[])
 {
     if (argc != 2)
-    {
-        std::cout << "Error: could not open file." << std::endl;
-        return (EXIT_FAILURE);
-    }
+        error_message("Error: Wrong amount of arguments");
     //Check if file is available
 	std::ifstream	infile;
     if (checkInput(&infile, argv[1]) == false)
@@ -53,6 +56,8 @@ int main(int argc, char *argv[])
     while (!infile.eof())
     {
         getline(infile, line);
+        if (line.size() == 0)
+            error_message("Error: Empty line in input file");
         btc.checkBitcoin(line);
     }
     // Close files
